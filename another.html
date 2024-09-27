@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>パートナーがしてもらいたいことリスト</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/list.css" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <h1>自分がパートナーにしてもらいたいことリスト</h1>
+      <img src="./img/flower-orange.png" alt="" />
+      <ul id="self-list"></ul>
+
+      <!-- ダイアログ -->
+      <dialog id="dialog">
+        <p>アイテム追加</p>
+        <div class="flex">
+          <div class="center">
+            <button id="close" type="button">キャンセル</button>
+            <button id="add-item-btn">登録</button>
+          </div>
+        </div>
+        <div class="dialog-content">
+          <label for="list-type">リストタイプ<br /></label>
+          <select id="list-type">
+            <option value="partner">
+              パートナーがしてもらいたいことリスト
+            </option>
+            <option value="self">
+              自分がパートナーにしてもらいたいことリスト
+            </option></select
+          ><br />
+          <label for="icon-type">アイコンの種類</label><br />
+          <select id="icon-type">
+            <option value="cook">料理</option>
+            <option value="communication">コミュニケーション</option>
+            <option value="action">アクション</option>
+            <option value="shopping">ショッピング</option></select
+          ><br />
+          <label for="item-content">リストアイテム内容</label><br />
+          <input type="text" id="item-content" value="" />
+        </div>
+      </dialog>
+    </main>
+
+    <footer>
+      <div class="icon-wrapper">
+        <a href="index.html"><img src="./img/you-gray.png" /></a>
+        <a href="another.html"><img src="./img/partner-black.png" /></a>
+        <button id="open"><img src="./img/plus.png" /></button>
+        <a href="history.html"><img src="img/history-gray.png" /></a>
+        <a href="setting.html"><img src="./img/setting-gray.png" /></a>
+      </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>

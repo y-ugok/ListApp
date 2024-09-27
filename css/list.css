@@ -1,0 +1,152 @@
+/* ----- リスト ----- */
+
+ul {
+  padding: 0;
+}
+/* .cook {
+  list-style-image: url("../img/cook.png");
+} */
+li {
+  padding-left: 3.5em;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  height: 6em;
+  position: relative;
+  margin-top: 0.7rem;
+  background-color: white;
+  align-items: flex-start;
+  font-size: 3vw;
+}
+li::before {
+  content: "";
+  position: absolute;
+  /* 祖先の要素を近い順に辿って、relative, absolute, fixed, stickyのいずれかが最初に指定された要素の位置を基準に、自身の位置を移動する */
+  left: -1px;
+  top: 0;
+  width: 2.5rem;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+li > button {
+  width: 2.1rem;
+  height: 100%;
+  border-style: none;
+  background-color: #ffc7be;
+  padding: 0;
+}
+
+main img {
+  display: block;
+  margin: 0 auto;
+}
+.cook::before {
+  background-image: url("../img/cook.png");
+}
+.communication::before {
+  background-image: url("../img/communication.png");
+}
+.action::before {
+  background-image: url("../img/action.png");
+}
+.shopping::before {
+  background-image: url("../img/shopping.png");
+}
+button {
+  text-align: center;
+}
+button > img {
+  width: 1.5rem;
+}
+
+.list-flex {
+  width: 100%;
+  /* background-color: #545454; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* AI生成 */
+li {
+  padding-left: 3.5em;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  height: 5em;
+  position: relative;
+  margin-top: 0.5rem;
+  background-color: white;
+  align-items: flex-start;
+  font-size: 3vw;
+}
+.text {
+  margin-top: 0.6rem;
+  width: 90%;
+}
+
+li span {
+  display: inline-flex;
+  align-items: flex-start; /* 文字と画像を上端で揃える */
+}
+
+li span img {
+  margin-right: 0.3rem; /* 文字と「・・・」の画像の間にスペースを作る */
+  width: 1rem;
+}
+
+li > button {
+  height: 100%;
+  border-style: none;
+  background-color: #ffc7be;
+  padding: 0;
+}
+/* ダイアログのスタイル */
+dialog {
+  /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
+  top: auto;
+
+  /* デフォルトで最大幅が設定されていて width: 100% にならないので解除 */
+  max-width: none;
+
+  /* デフォルトで fit-content になっていて中身の幅になってしまうので解除 */
+  width: auto;
+
+  /*
+   * デフォルトが auto なので visible にして box-shadow が表示されるようにする
+   * スクロールさせたい場合は子孫要素で overflow: auto などを指定する
+   */
+  overflow: visible;
+
+  padding: 16px;
+  background-color: #fff;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 背景のスタイルは ::backdrop 疑似要素で指定 */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+/* ダイアログと背景に CSS トランジションを設定 */
+dialog,
+dialog::backdrop {
+  transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* ダイアログの表示前、非表示後は下に移動 */
+.show-from,
+.hide-to {
+  translate: 0 100%;
+}
+
+/* ダイアログの表示前、非表示後は背景を透明にする */
+.show-from::backdrop,
+.hide-to::backdrop {
+  opacity: 0;
+}
