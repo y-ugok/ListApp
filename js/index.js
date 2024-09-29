@@ -108,7 +108,7 @@ function loadList() {
         icon: "communication",
         text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しい",
       },
-      { icon: "shopping", text: "ショッピングを手伝ってもらいたい" },
+      { icon: "shopping", text: "買い物を手伝ってもらいたい" },
     ];
     localStorage.setItem(listKey, JSON.stringify(storedItems));
   }
