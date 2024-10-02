@@ -1,0 +1,309 @@
+const dialog = document.querySelector("dialog");
+const openButton = document.getElementById("open");
+const closeButton = document.getElementById("close");
+const addButton = document.getElementById("add-item-btn");
+const listType = document.getElementById("list-type");
+const iconType = document.getElementById("icon-type");
+const listText = document.getElementById("item-content");
+
+let editMode = false; // 編集モードを管理する変数
+let editTargetItem = null; // 編集対象のアイテムを保存するための変数
+
+// ページに応じてlistKeyを決定
+function getListKey() {
+  if (window.location.pathname.includes("another.html")) {
+    return "self-list"; // another.html の場合は self-list を使う
+  } else {
+    return "partner-list"; // index.html の場合は partner-list を使う
+  }
+}
+
+// 開くボタンをクリックされた時
+document.querySelector("#open").addEventListener("click", show);
+
+function show() {
+  // モーダル表示前にクラスを付与
+  dialog.classList.add("show-from");
+  dialog.showModal();
+
+  requestAnimationFrame(() => {
+    // モーダル表示後にクラスを削除してアニメーションを開始
+    dialog.classList.remove("show-from");
+  });
+}
+
+// ダイアログを開く・閉じる
+openButton.addEventListener("click", () => {
+  // フィールドをリセットする処理
+  listType.value = "partner"; // デフォルトのリストタイプにリセット
+  iconType.value = "cook"; // デフォルトのアイコンタイプにリセット
+  listText.value = ""; // テキストフィールドを空にする
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+// 開くボタンをクリックされた時
+document.querySelector("#open").addEventListener("click", show);
+
+function show() {
+  // モーダル表示前にクラスを付与
+  dialog.classList.add("show-from");
+  dialog.showModal();
+
+  requestAnimationFrame(() => {
+    // モーダル表示後にクラスを削除してアニメーションを開始
+    dialog.classList.remove("show-from");
+  });
+}
+// アイテム追加ボタンの処理
+addButton.addEventListener("click", () => {
+  // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
+  if (!listText.value.trim()) {
+    alert("リストアイテムの内容を入力してください。");
+    return; // 処理を終了する
+  }
+  const newItem = {
+    type: listType.value,
+    icon: iconType.value,
+    text: listText.value,
+  };
+  if (editMode && editTargetItem) {
+    // 編集モードの場合、リストアイテムを更新する
+    const oldText = editTargetItem.querySelector(".text").textContent;
+    updateLocalStorageItem(oldText, newItem); // ローカルストレージのアイテムを更新
+    editTargetItem.querySelector(".text").textContent = newItem.text; // リストのテキストを更新
+    editTargetItem.className = newItem.icon; // アイコンのクラスを更新
+  } else {
+    // 通常の新規追加処理
+    saveToLocalStorage(newItem);
+  }
+});
+
+// ローカルストレージにアイテムを保存
+function saveToLocalStorage(item) {
+  const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
+  let storedItems = JSON.parse(localStorage.getItem(listKey)) || [];
+  storedItems.push(item);
+  localStorage.setItem(listKey, JSON.stringify(storedItems));
+}
+
+// ローカルストレージからアイテムを削除
+function removeFromLocalStorage(itemText) {
+  const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
+  let storedItems = JSON.parse(localStorage.getItem(listKey)) || [];
+  // テキストに基づいてアイテムを削除
+  storedItems = storedItems.filter((item) => item.text !== itemText);
+  localStorage.setItem(listKey, JSON.stringify(storedItems));
+}
+
+// 初期データの読み込みと表示
+function loadList() {
+  const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
+  const ul = document.getElementById(listKey);
+  let storedItems = JSON.parse(localStorage.getItem(listKey)) || [];
+
+  // デフォルトのアイテムをローカルストレージに追加
+  if (storedItems.length === 0) {
+    storedItems = [
+      { icon: "cook", text: "自分の好きなご飯をパートナーに作ってもらいたい" },
+      { icon: "communication", text: "1日1つ以上誉め言葉をかけてほしい" },
+      { icon: "action", text: "疲れている時にマッサージ" },
+      {
+        icon: "communication",
+        text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しい",
+      },
+      { icon: "shopping", text: "買い物を手伝ってもらいたい" },
+    ];
+    localStorage.setItem(listKey, JSON.stringify(storedItems));
+  }
+
+  // 追加すると二重に表示されないようにする
+  ul.textContent = "";
+
+  storedItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.classList.add(item.icon);
+    li.innerHTML = `
+        <span class="list-flex">
+        <span class="text">${item.text}</span>
+        <img src="./img/dots.png" />
+        </span>
+      <button class="remove-btn"><img src="./img/check-icon.png" /></button>
+    `;
+    ul.appendChild(li);
+  });
+
+  // アイテム削除ボタンのクリックイベントを追加
+  const removeButtons = document.querySelectorAll(".remove-btn");
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const li = event.target.closest("li");
+      const itemText = li.querySelector(".text").textContent;
+
+      // DOMから削除
+      li.remove();
+
+      // ローカルストレージから削除
+      removeFromLocalStorage(itemText);
+    });
+  });
+}
+function addDotsFunctionality() {
+  const dotIcons = document.querySelectorAll('li img[src="./img/dots.png"]');
+
+  dotIcons.forEach((dotIcon) => {
+    dotIcon.addEventListener("click", (event) => {
+      const li = event.target.closest("li");
+
+      // すでにボタンが存在する場合は削除
+      let existingButtons = li.querySelector(".edit-delete-container");
+      if (existingButtons) {
+        existingButtons.remove();
+        return;
+      }
+
+      // 編集と削除ボタンを作成
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("edit-delete-container");
+
+      const editButton = document.createElement("button");
+      editButton.textContent = "編集";
+      editButton.classList.add("edit-btn");
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "削除";
+      deleteButton.classList.add("delete-btn");
+
+      buttonContainer.appendChild(editButton);
+      buttonContainer.appendChild(deleteButton);
+      li.appendChild(buttonContainer);
+
+      // 編集ボタンのクリックイベント;
+      editButton.addEventListener("click", () => {
+        openEditDialog(li);
+      });
+
+      // 削除ボタンのクリックイベント
+      deleteButton.addEventListener("click", () => {
+        const itemText = li.querySelector(".text").textContent;
+        li.remove(); // DOMから削除
+        removeFromLocalStorage(itemText); // ローカルストレージから削除
+      });
+    });
+  });
+}
+// 編集用のダイアログを表示する関数
+function openEditDialog(itemElement) {
+  editMode = true; // 編集モードに切り替える
+  editTargetItem = itemElement; // 編集対象のリストアイテムを保持
+
+  // ダイアログに既存のリストアイテムの内容をセット
+  const itemText = itemElement.querySelector(".text").textContent;
+  const itemIcon = itemElement.classList.contains("cook")
+    ? "cook"
+    : itemElement.classList.contains("communication")
+    ? "communication"
+    : itemElement.classList.contains("action")
+    ? "action"
+    : "shopping";
+
+  listType.value = "partner"; // 編集するのは常にパートナーリストのアイテムと仮定
+  iconType.value = itemIcon; // アイコンタイプを設定
+  listText.value = itemText; // リストの内容を設定
+
+  dialog.showModal(); // ダイアログを開く
+}
+
+function addDotsFunctionality() {
+  const dotIcons = document.querySelectorAll('li img[src="./img/dots.png"]');
+
+  dotIcons.forEach((dotIcon) => {
+    dotIcon.addEventListener("click", (event) => {
+      const li = event.target.closest("li");
+
+      // すでにボタンが存在する場合は削除
+      let existingButtons = li.querySelector(".edit-delete-container");
+      if (existingButtons) {
+        existingButtons.remove();
+        return;
+      }
+
+      // 編集と削除ボタンを作成
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("edit-delete-container");
+
+      const editButton = document.createElement("button");
+      editButton.textContent = "編集";
+      editButton.classList.add("edit-btn");
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "削除";
+      deleteButton.classList.add("delete-btn");
+
+      buttonContainer.appendChild(editButton);
+      buttonContainer.appendChild(deleteButton);
+      li.appendChild(buttonContainer);
+
+      // 編集ボタンのクリックイベント
+      editButton.addEventListener("click", () => {
+        openEditDialog(li); // 編集ダイアログを開く処理を呼び出す
+      });
+
+      // 削除ボタンのクリックイベント
+      deleteButton.addEventListener("click", () => {
+        const itemText = li.querySelector(".text").textContent;
+        li.remove(); // DOMから削除
+        removeFromLocalStorage(itemText); // ローカルストレージから削除
+      });
+    });
+  });
+}
+// アイテム追加ボタンの処理
+addButton.addEventListener("click", () => {
+  // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
+  if (!listText.value.trim()) {
+    alert("リストアイテムの内容を入力してください。");
+    return; // 処理を終了する
+  }
+  const newItem = {
+    type: listType.value,
+    icon: iconType.value,
+    text: listText.value,
+  };
+  if (editMode && editTargetItem) {
+    // 編集モードの場合、リストアイテムを更新する
+    const oldText = editTargetItem.querySelector(".text").textContent;
+    updateLocalStorageItem(oldText, newItem); // ローカルストレージのアイテムを更新
+    editTargetItem.querySelector(".text").textContent = newItem.text; // リストのテキストを更新
+    editTargetItem.className = newItem.icon; // アイコンのクラスを更新
+  } else {
+    // 通常の新規追加処理
+    saveToLocalStorage(newItem);
+  }
+  dialog.close(); // ダイアログを閉じる
+  editMode = false; // 編集モードをリセット
+  editTargetItem = null; // 編集対象のアイテムをリセット
+});
+// ローカルストレージのアイテムを更新する関数
+function updateLocalStorageItem(oldText, newItem) {
+  const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
+  let storedItems = JSON.parse(localStorage.getItem(listKey)) || [];
+
+  // 古いアイテムを探して更新
+  storedItems = storedItems.map((item) => {
+    if (item.text === oldText) {
+      return newItem; // アイテムを新しい内容で更新
+    }
+    return item;
+  });
+
+  localStorage.setItem(listKey, JSON.stringify(storedItems));
+}
+
+window.onload = () => {
+  loadList();
+  addDotsFunctionality(); // dots.png の機能を追加
+};
