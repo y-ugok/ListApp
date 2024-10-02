@@ -10,10 +10,10 @@ let editTargetItem = null; // 編集対象のアイテムを保存するため�
 
 // ページに応じてlistKeyを決定
 function getListKey() {
-  if (window.location.pathname.includes('another.html')) {
-    return 'self-list'; // another.html の場合は self-list を使う
+  if (window.location.pathname.includes('self.html')) {
+    return 'self-list'; // self.html の場合は self-list を使う
   } else {
-    return 'partner-list'; // index.html の場合は partner-list を使う
+    return 'partner-list'; // partner.html の場合は partner-list を使う
   }
 }
 
