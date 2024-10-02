@@ -99,8 +99,8 @@ function removeFromLocalStorage(itemText) {
 // 初期データの読み込みと表示
 function loadList() {
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
-  const ul = document.getElementById(listKey);
   let storedItems = JSON.parse(localStorage.getItem(listKey)) || [];
+  const ul = document.getElementById('list');
 
   // デフォルトのアイテムをローカルストレージに追加
   if (storedItems.length === 0) {
@@ -108,20 +108,20 @@ function loadList() {
       storedItems = [
         {
           icon: 'cook',
-          text: '私の好きなご飯をパートナーに作ってもらいたい',
+          text: '私の好きなご飯をパートナーに作ってもらいたいわ',
         },
         {
           icon: 'communication',
-          text: '1日1つ以上誉め言葉をかけてほしい',
+          text: '1日1つ以上誉め言葉をかけてほしいわ',
         },
-        { icon: 'action', text: '疲れている時にマッサージ' },
+        { icon: 'action', text: '疲れている時にマッサージしてほしいわ' },
         {
           icon: 'communication',
-          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しい',
+          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しいわ',
         },
         {
           icon: 'shopping',
-          text: '買い物を手伝ってもらいたい',
+          text: '買い物を手伝ってもらいたいわ',
         },
       ];
     } else {
