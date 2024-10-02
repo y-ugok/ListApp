@@ -64,7 +64,6 @@ addButton.addEventListener('click', () => {
     return; // 処理を終了する
   }
   const newItem = {
-    type: 'partner',
     icon: iconType.value,
     text: listText.value,
   };
@@ -105,16 +104,47 @@ function loadList() {
 
   // デフォルトのアイテムをローカルストレージに追加
   if (storedItems.length === 0) {
-    storedItems = [
-      { icon: 'cook', text: '自分の好きなご飯をパートナーに作ってもらいたい' },
-      { icon: 'communication', text: '1日1つ以上誉め言葉をかけてほしい' },
-      { icon: 'action', text: '疲れている時にマッサージ' },
-      {
-        icon: 'communication',
-        text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しい',
-      },
-      { icon: 'shopping', text: '買い物を手伝ってもらいたい' },
-    ];
+    if (listKey === 'self-list') {
+      storedItems = [
+        {
+          icon: 'cook',
+          text: '私の好きなご飯をパートナーに作ってもらいたい',
+        },
+        {
+          icon: 'communication',
+          text: '1日1つ以上誉め言葉をかけてほしい',
+        },
+        { icon: 'action', text: '疲れている時にマッサージ' },
+        {
+          icon: 'communication',
+          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しい',
+        },
+        {
+          icon: 'shopping',
+          text: '買い物を手伝ってもらいたい',
+        },
+      ];
+    } else {
+      storedItems = [
+        {
+          icon: 'cook',
+          text: '私の好きなご飯をパートナーに作ってもらいたい',
+        },
+        {
+          icon: 'communication',
+          text: '1日1つ以上誉め言葉をかけてほしい',
+        },
+        { icon: 'action', text: '疲れている時にマッサージ' },
+        {
+          icon: 'communication',
+          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しい',
+        },
+        {
+          icon: 'shopping',
+          text: 'ショッピングを手伝ってもらいたい',
+        },
+      ];
+    }
     localStorage.setItem(listKey, JSON.stringify(storedItems));
   }
 
@@ -194,7 +224,6 @@ addButton.addEventListener('click', () => {
     return; // 処理を終了する
   }
   const newItem = {
-    type: 'partner',
     icon: iconType.value,
     text: listText.value,
   };
