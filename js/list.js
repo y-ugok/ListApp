@@ -202,7 +202,7 @@ function loadList() {
 }
 
 function addDotsFunctionality() {
-  const dotIcons = document.querySelectorAll('li img[src="../img/dots.png"]');
+  const dotIcons = document.querySelectorAll('li img[src="./img/dots.png"]');
 
   dotIcons.forEach((dotIcon) => {
     dotIcon.addEventListener("click", (event) => {
