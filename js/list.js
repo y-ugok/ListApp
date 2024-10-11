@@ -202,7 +202,7 @@ function loadList() {
 }
 
 function addDotsFunctionality() {
-  const dotIcons = document.querySelectorAll('li img[src="../img/dots.png"]');
+  const dotIcons = document.querySelectorAll('li img[src="./img/dots.png"]');
 
   dotIcons.forEach((dotIcon) => {
     dotIcon.addEventListener("click", (event) => {
@@ -295,15 +295,15 @@ function updatePlantImage() {
   const plantImage = document.getElementById("plantImage");
   console.log(completedTasks);
   if (completedTasks >= 0 && completedTasks <= 2) {
-    plantImage.src = "../img/plant1.png";
+    plantImage.src = "./img/plant1.png";
   } else if (completedTasks >= 3 && completedTasks <= 5) {
-    plantImage.src = "../img/plant2.png";
+    plantImage.src = "./img/plant2.png";
   } else if (completedTasks >= 6 && completedTasks <= 8) {
-    plantImage.src = "../img/plant3.png";
+    plantImage.src = "./img/plant3.png";
   } else if (completedTasks >= 9 && completedTasks <= 11) {
-    plantImage.src = "../img/plant4.png";
+    plantImage.src = "./img/plant4.png";
   } else {
-    plantImage.src = "../img/plant5.png";
+    plantImage.src = "./img/plant5.png";
   }
 }
 
