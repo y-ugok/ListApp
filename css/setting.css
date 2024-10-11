@@ -1,0 +1,138 @@
+.wrapper {
+  width: 88%;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+}
+a {
+  padding: 0; /* パディングをゼロにする */
+  margin: 0; /* マージンもゼロにする */
+  display: block;
+  /* 要素が横まで広がって縦に並ぶ */
+  text-decoration: none;
+  margin-top: 0.7rem;
+  background-color: white;
+  color: rgb(84, 84, 84);
+}
+
+.list {
+  padding: 0;
+}
+.list li {
+  list-style-type: none;
+  padding: 1em;
+  font-size: 3.5vw;
+  /* margin-top: 0.5rem; */
+  background-color: white;
+  border: 1px solid #ffd88a;
+}
+
+body {
+  margin: 0;
+  background-color: #fffbf1;
+}
+header {
+  background-color: #ffc3b7;
+  padding: 1.2em;
+}
+main {
+  width: 88%;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 80%; /* アイコンの表示範囲を80%に */
+}
+
+footer {
+  display: flex; /* 横並びにする */
+  justify-content: space-around; /* 均等に間隔を空ける */
+  align-items: center; /* 高さを中央揃えにする */
+  background-color: #ffffff; /* フッターの背景色 */
+  border: solid 0.1px lightgray;
+  padding: 6px 0; /* 上下にパディングを追加 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 80%; /* アイコンの表示範囲を80%に */
+}
+/* aタグのflexと中央揃えを指定 */
+.icon-wrapper a {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* これで縦方向に中央揃え */
+}
+/* 3つ目のアイコンを大きくする */
+.icon-wrapper a:nth-child(3) img {
+  width: 3rem;
+}
+.icon-wrapper a:nth-child(4) img {
+  width: 1.35rem;
+}
+/* 他のアイコンを1.8remに */
+.icon-wrapper a:not(:nth-child(3), :nth-child(4)) img {
+  width: 1.6rem;
+}
+h1 {
+  color: #545454;
+  font-size: 0.95rem;
+  margin: 1rem 0;
+}
+#open {
+  border-style: none;
+  background-color: #efefef;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 1px #dbdbdb;
+}
+
+/* ==== ダイアログのスタイル ==== */
+/* 背景のスタイルは ::backdrop 疑似要素で指定 */
+dialog {
+  width: 75%;
+  padding: 0;
+  border-style: none;
+  border-radius: 0.5rem;
+}
+dialog > p {
+  padding: 0.6rem;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  /* backdrop-filter: blur(2px); */
+  /* 要素の背後の領域に、ぼかしや色変化のようなグラフィック効果を適用 */
+}
+
+.button-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* ボタンをダイアログの下に配置 */
+}
+
+.button-flex button {
+  width: 50%; /* 50%に近い幅にし、間に少し余白を持たせる */
+  padding: 10px;
+  border: none;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #ccc; /* キャンセルボタンの背景色 */
+}
+
+#confirm-reset {
+  background-color: pink; /* OKボタンの背景色 */
+  color: white; /* OKボタンのテキスト色 */
+}
