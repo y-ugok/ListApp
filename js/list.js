@@ -164,7 +164,7 @@ function loadList() {
         </div>
       <span class="list-flex">
           <span class="text">${item.text}</span>
-          <img src="../img/dots.png">
+          <img src="./img/dots.png">
       </span>
       <button class="remove-btn"><img src="./img/check-icon.png" /></button>
     `;
