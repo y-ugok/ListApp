@@ -166,7 +166,7 @@ function loadList() {
           <span class="text">${item.text}</span>
           <img src="./img/dots.png">
       </span>
-      <button class="remove-btn"><img src="./img/check-icon.png" /></button>
+      <button class="remove-btn" onclick="completeTask()><img src="./img/check-icon.png" /></button>
     `;
     } else {
       li.innerHTML = `
@@ -178,7 +178,7 @@ function loadList() {
    <span class="list-flex">
        <span class="text">${item.text}</span>
    </span>
-   <button class="remove-btn"><img src="./img/check-icon.png" /></button>
+   <button class="remove-btn" onclick="completeTask()><img src="./img/check-icon.png" /></button>
  `;
     }
     ul.appendChild(li);
