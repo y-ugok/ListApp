@@ -159,26 +159,26 @@ function loadList() {
       li.innerHTML = `
          <div class="wrapper">
          <div class="rectangle">
-          <img src="./img/${item.icon}.png" alt="${item.icon}" />
+          <img src="../img/${item.icon}.png" alt="${item.icon}" />
           </div>
         </div>
       <span class="list-flex">
           <span class="text">${item.text}</span>
-          <img src="../img/dots.png">
+          <img src=".../img/dots.png">
       </span>
-      <button class="remove-btn"><img src="./img/check-icon.png" /></button>
+      <button class="remove-btn"><img src="../img/check-icon.png" /></button>
     `;
     } else {
       li.innerHTML = `
       <div class="wrapper">
       <div class="rectangle">
-       <img src="./img/${item.icon}.png" alt="${item.icon}" />
+       <img src="../img/${item.icon}.png" alt="${item.icon}" />
        </div>
      </div>
    <span class="list-flex">
        <span class="text">${item.text}</span>
    </span>
-   <button class="remove-btn"><img src="./img/check-icon.png" /></button>
+   <button class="remove-btn"><img src="../img/check-icon.png" /></button>
  `;
     }
     ul.appendChild(li);
@@ -202,7 +202,7 @@ function loadList() {
 }
 
 function addDotsFunctionality() {
-  const dotIcons = document.querySelectorAll('li img[src="../img/dots.png"]');
+  const dotIcons = document.querySelectorAll('li img[src=".../img/dots.png"]');
 
   dotIcons.forEach((dotIcon) => {
     dotIcon.addEventListener("click", (event) => {
@@ -295,15 +295,15 @@ function updatePlantImage() {
   const plantImage = document.getElementById("plantImage");
   console.log(completedTasks);
   if (completedTasks >= 0 && completedTasks <= 2) {
-    plantImage.src = "../img/plant1.png";
+    plantImage.src = ".../img/plant1.png";
   } else if (completedTasks >= 3 && completedTasks <= 5) {
-    plantImage.src = "../img/plant2.png";
+    plantImage.src = ".../img/plant2.png";
   } else if (completedTasks >= 6 && completedTasks <= 8) {
-    plantImage.src = "../img/plant3.png";
+    plantImage.src = ".../img/plant3.png";
   } else if (completedTasks >= 9 && completedTasks <= 11) {
-    plantImage.src = "../img/plant4.png";
+    plantImage.src = ".../img/plant4.png";
   } else {
-    plantImage.src = "../img/plant5.png";
+    plantImage.src = ".../img/plant5.png";
   }
 }
 
