@@ -152,34 +152,27 @@ function loadList() {
   // 追加すると二重に表示されないようにする
   ul.textContent = "";
 
+// 追加すると二重に表示されないようにする
+  ul.textContent = "";
+
   storedItems.forEach((item) => {
     const li = document.createElement("li");
     li.classList.add(item.icon);
     if (listKey === "self-list") {
       li.innerHTML = `
-         <div class="wrapper">
-         <div class="rectangle">
-          <img src="./img/${item.icon}.png" alt="${item.icon}" />
-          </div>
-        </div>
-      <span class="list-flex">
-          <span class="text">${item.text}</span>
-          <img src="./img/dots.png">
-      </span>
-      <button class="remove-btn" onclick="completeTask()><img src="./img/check-icon.png" /></button>
+        <span class="list-flex">
+        <span class="text">${item.text}</span>
+        <img src="./img/dots.png" />
+        </span>
+      <button class="remove-btn"  onclick="completeTask()"><img src="./img/check-icon.png" /></button>
     `;
     } else {
       li.innerHTML = `
-      <div class="wrapper">
-      <div class="rectangle">
-       <img src="./img/${item.icon}.png" alt="${item.icon}" />
-       </div>
-     </div>
-   <span class="list-flex">
-       <span class="text">${item.text}</span>
-   </span>
-   <button class="remove-btn" onclick="completeTask()><img src="./img/check-icon.png" /></button>
- `;
+      <span class="list-flex">
+      <span class="text">${item.text}</span>
+      </span>
+    <button class="remove-btn"  onclick="completeTask()"><img src="./img/check-icon.png" /></button>
+  `;
     }
     ul.appendChild(li);
   });
