@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>設定</title>
+    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/setting.css" />
+ 
+
+
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <h1>設定</h1>
+      <ul class="list">
+        <a href="#">
+        <li>パートナーを招待
+        </li>
+        </a>
+        <a href="#" id="reset-btn">
+        <li>
+          データの初期化
+        </li>
+      </a>
+          <!-- 初期化確認ダイアログ -->
+        <dialog id="reset-dialog">
+          <p>追加したリスト等、全てのデータを削除し初期化します。本当に続けますか？</p>
+          <div class="button-flex">
+            <button id="cancel-reset">キャンセル</button>
+            <button id="confirm-reset">OK</button>
+          </div>
+        </dialog>
+        <a href="#" id="themecolor">
+        <li>
+          テーマカラーの変更
+        </li>
+        </a>
+         <dialog id="themecolorModal">
+          <!-- inner を増やして見た目のスタイルをすべてこれに設定 -->
+          <div class="inner">
+            <p>アクションシートのようなモーダル</p>
+            <button id="close" type="button">閉じる</button>
+          </div>
+        </dialog>
+    </main>
+    <footer>
+      <div class="icon-wrapper">
+        <a href="partner.html"><img src="./img/partner-gray.png" /></a>
+        <a href="self.html"><img src="./img/you-gray.png" /></a>
+        <button id="open"><img src="./img/plus.png" /></button>
+        <a href="history.html"><img src="img/history-gray.png" /></a>
+        <a href="setting.html"><img src="./img/setting-black.png" /></a>
+      </div>
+    </footer>
+    <script src="./js/setting.js"></script>
+  </body>
+</html>
