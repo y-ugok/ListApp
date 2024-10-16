@@ -1,3 +1,5 @@
+'use strict';
+
 const openButton = document.getElementById('open');
 const closeButton = document.getElementById('close');
 const addButton = document.getElementById('add-item-btn');
@@ -76,56 +78,12 @@ function removeFromsessionStorage(itemText) {
 
 // 初期データの読み込みと表示
 function loadList() {
+  // defaultList.js
+  loadDefaultList();
+
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
   const ul = document.getElementById('list');
-
-  // デフォルトのアイテムをセッションストレージに追加
-  if (storedItems.length === 0) {
-    if (listKey === 'self-list') {
-      storedItems = [
-        {
-          icon: 'cook',
-          text: '私の好きなご飯をパートナーに作ってもらいたいわ'
-        },
-        {
-          icon: 'communication',
-          text: '1日1つ以上誉め言葉をかけてほしいわ'
-        },
-        { icon: 'action', text: '疲れている時にマッサージしてほしいわ' },
-        {
-          icon: 'communication',
-          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しいわ'
-        },
-        {
-          icon: 'shopping',
-          text: '買い物を手伝ってもらいたいわ'
-        }
-      ];
-    } else {
-      storedItems = [
-        {
-          icon: 'cook',
-          text: '私の好きなご飯をパートナーに作ってもらいたい'
-        },
-        {
-          icon: 'communication',
-          text: '1日1つ以上誉め言葉をかけてほしい'
-        },
-        { icon: 'action', text: '疲れている時にマッサージ' },
-        {
-          icon: 'communication',
-          text: '1日1回以上は感謝の気持ちを伝えてもらえると嬉しい'
-        },
-        {
-          icon: 'shopping',
-          text: '買い物を手伝ってもらいたい'
-        }
-      ];
-    }
-    sessionStorage.setItem(listKey, JSON.stringify(storedItems));
-    addDotsFunctionality(); // リストを読み込んだ後に追加
-  }
 
   // 追加すると二重に表示されないようにする
   ul.textContent = '';
@@ -164,27 +122,6 @@ function loadList() {
     ul.appendChild(li);
   });
 
-  // storedItems.forEach((item) => {
-  //   const li = document.createElement("li");
-  //   li.classList.add(item.icon);
-  //   if (listKey === "self-list") {
-  //     li.innerHTML = `
-  //       <span class="list-flex">
-  //       <span class="text">${item.text}</span>
-  //       <img src="./img/dots.png" />
-  //       </span>
-  //     <button class="remove-btn"  onclick="completeTask()"><img src="./img/check-icon.png" /></button>
-  //   `;
-  //   } else {
-  //     li.innerHTML = `
-  //     <span class="list-flex">
-  //     <span class="text">${item.text}</span>
-  //     </span>
-  //   <button class="remove-btn"  onclick="completeTask()"><img src="./img/check-icon.png" /></button>
-  // `;
-  //   }
-  //   ul.appendChild(li);
-  // });
   // アイテム削除ボタンのクリックイベントを追加
   const removeButtons = document.querySelectorAll('.remove-btn');
   removeButtons.forEach((button) => {

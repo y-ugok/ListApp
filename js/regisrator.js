@@ -1,3 +1,5 @@
+'use strict';
+
 // タブ切り替え機能
 document.getElementById('tab-your').addEventListener('click', function () {
   showHistory('your');
@@ -22,8 +24,8 @@ function showHistory(tab) {
   }
 }
 
-// 初期データの読み込みと表示
-function loadList() {
+// データの読み込みと表示
+function loadHistory() {
   const selfKey = 'self-list';
   const partnerKey = 'partner-list';
   const historyKey = 'history-list';
@@ -33,25 +35,7 @@ function loadList() {
   let historyItems = JSON.parse(sessionStorage.getItem(historyKey)) || [];
 
   const ul = document.getElementById('list');
-
-  // デフォルトのアイテムをセッションストレージに追加
-  if (historyItems.length === 0) {
-    }
-    sessionStorage.setItem(listKey, JSON.stringify(storedItems));
-    addDotsFunctionality(); // リストを読み込んだ後に追加
-  }
 }
-
-// サンプルデータ（実際の操作履歴をここに追加）
-const yourHistory = [
-  { action: 'リストアイテムを追加', date: '2024年10月2日 14:35' },
-  { action: 'リストアイテムを削除', date: '2024年10月1日 10:20' }
-];
-
-const partnerHistory = [
-  { action: 'リストアイテムを編集', date: '2024年9月30日 18:05' },
-  { action: 'リストアイテムを追加', date: '2024年9月29日 13:50' }
-];
 
 // 履歴の表示関数
 function displayHistory() {
