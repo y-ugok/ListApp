@@ -208,6 +208,7 @@ dialog[open] {
   align-items: center;
   margin: 1em;
   padding: 0;
+  border-style:none;
 }
 dialog {
   padding: 0;
