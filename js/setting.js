@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("themeColor", color); // 選択した色をローカルストレージに保存
     document.querySelector("header").style.backgroundColor = color;
     document.getElementById("confirm-reset").style.backgroundColor = color;
+    document.getElementById("del-item-btn").style.backgroundColor = color;
     const rectangles = document.querySelectorAll(".rectangle");
     const removeButtons = document.querySelectorAll(".remove-btn");
     rectangles.forEach((rect) => {
