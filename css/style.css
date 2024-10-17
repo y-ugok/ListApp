@@ -110,6 +110,9 @@ dialog > p {
   text-align: center;
   margin-bottom: 0;
 }
+#reset-dialog{
+text-align:left;
+}
 /* ダイアログの表示前、非表示後は下に移動 */
 .show-from,
 .hide-to {
