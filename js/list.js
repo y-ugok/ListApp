@@ -122,15 +122,12 @@ function loadList() {
     button.addEventListener('click', (event) => {
       const li = event.target.closest('li');
       const itemText = li.querySelector('.text').textContent;
-
-      // DOMから削除
-      li.remove();
-
       // セッションストレージから削除
       removeFromSessionStorage(itemText);
-
       // 履歴に記録（in history.js）
       completeHistory(itemText);
+      // DOMから削除
+      li.remove();
     });
   });
   addDotsFunctionality(); // リストを読み込んだ後に追加
@@ -157,19 +154,22 @@ function addDotsFunctionality() {
       iconType.value = itemIcon; // アイコンタイプを設定
       listText.value = itemText; // リストの内容を設定
 
-      // 削除ボタンのクリックイベント
       deleteButton.addEventListener('click', () => {
-        const itemText = itemElement.querySelector('.text').textContent;
-        itemElement.remove(); // DOMから削除
-        removeFromSessionStorage(itemText); // セッションストレージから削除
-        removeHistory(itemText); // 履歴を更新（in history.js）
-        editDialog.close();
+        itemElement.remove();
       });
 
       editDialog.showModal(); // ダイアログを開く
     });
   });
 }
+
+// 削除ボタンのクリックイベント
+deleteButton.addEventListener('click', () => {
+  removeFromSessionStorage(listText.value); // セッションストレージから削除
+  removeHistory(listText.value); // 履歴を更新（in history.js）
+  // listText.remove(); // DOMから削除
+  editDialog.close();
+});
 
 // アイテム更新ボタンの処理
 updateButton.addEventListener('click', () => {
