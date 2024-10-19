@@ -1,8 +1,9 @@
 'use strict';
 
-const openButton = document.getElementById('open');
+const openButton =
+  document.getElementById('open') || document.getElementById('open-disabled');
 const closeButton = document.getElementById('close');
-const addButton = document.getElementById('add-item-btn');
+const updateButton = document.getElementById('update-item-btn');
 const iconType = document.getElementById('icon-type');
 const listText = document.getElementById('item-content');
 const dialog = document.querySelector('dialog');
@@ -34,6 +35,11 @@ function show() {
 
 // ダイアログを開く・閉じる
 openButton.addEventListener('click', () => {
+  // パートナーのしてほしいリストは追加できない
+  if (getListKey() === 'partner-list') {
+    return;
+  }
+
   // フィールドをリセットする処理
   iconType.value = 'cook'; // デフォルトのアイコンタイプにリセット
   listText.value = ''; // テキストフィールドを空にする
@@ -45,35 +51,33 @@ closeButton.addEventListener('click', () => {
   dialog.close();
 });
 
-// 開くボタンをクリックされた時
-document.querySelector('#open').addEventListener('click', show);
-
-function show() {
-  // モーダル表示前にクラスを付与
-  dialog.classList.add('show-from');
-  dialog.showModal();
-
-  requestAnimationFrame(() => {
-    // モーダル表示後にクラスを削除してアニメーションを開始
-    dialog.classList.remove('show-from');
-  });
-}
-
 // セッションストレージにアイテムを保存
-function saveTosessionStorage(item) {
+function saveToSessionStorage(item) {
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
   storedItems.unshift(item);
   sessionStorage.setItem(listKey, JSON.stringify(storedItems));
+
+  // 履歴を更新（in history.js）
+  registerHistory({
+    who: listKey === 'self-list' ? 'self' : 'partner',
+    item: item.text,
+  });
 }
 
 // セッションストレージからアイテムを削除
-function removeFromsessionStorage(itemText) {
+function removeFromSessionStorage(itemText) {
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
   // テキストに基づいてアイテムを削除
   storedItems = storedItems.filter((item) => item.text !== itemText);
   sessionStorage.setItem(listKey, JSON.stringify(storedItems));
+
+  // 履歴を更新（in history.js）
+  removeHistory({
+    who: listKey === 'self-list' ? 'self' : 'partner',
+    item: itemText,
+  });
 }
 
 // 初期データの読み込みと表示
@@ -104,7 +108,6 @@ function loadList() {
           <span class="text">${item.text}</span>
           <img src="./img/dots.png">
       </span>
-      <button class="remove-btn" onclick="completeTask()"><img src="./img/check-icon.png" /></button>
     `;
     } else {
       li.innerHTML = `
@@ -116,15 +119,15 @@ function loadList() {
    <span class="list-flex">
        <span class="text">${item.text}</span>
    </span>
-   <button class="remove-btn" onclick="completeTask()"><img src="./img/check-icon.png" /></button>
+   <button class="complete-btn" onclick="completeTask()"><img src="./img/check-icon.png" /></button>
  `;
     }
     ul.appendChild(li);
   });
 
   // アイテム削除ボタンのクリックイベントを追加
-  const removeButtons = document.querySelectorAll('.remove-btn');
-  removeButtons.forEach((button) => {
+  const completeButtons = document.querySelectorAll('.complete-btn');
+  completeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
       const li = event.target.closest('li');
       const itemText = li.querySelector('.text').textContent;
@@ -133,7 +136,9 @@ function loadList() {
       li.remove();
 
       // セッションストレージから削除
-      removeFromsessionStorage(itemText);
+      removeFromSessionStorage(itemText);
+
+      completeHistory('partner', itemText);
     });
   });
   addDotsFunctionality(); // リストを読み込んだ後に追加
@@ -166,7 +171,7 @@ function addDotsFunctionality() {
       deleteButton.addEventListener('click', () => {
         const itemText = itemElement.querySelector('.text').textContent;
         itemElement.remove(); // DOMから削除
-        removeFromsessionStorage(itemText); // セッションストレージから削除
+        removeFromSessionStorage(itemText); // セッションストレージから削除
         dialog.close();
       });
 
@@ -176,7 +181,7 @@ function addDotsFunctionality() {
 }
 
 // アイテム追加ボタンの処理
-addButton.addEventListener('click', () => {
+updateButton.addEventListener('click', () => {
   // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
   if (!listText.value.trim()) {
     alert('リストアイテムの内容を入力してください。');
@@ -184,31 +189,38 @@ addButton.addEventListener('click', () => {
   }
   const newItem = {
     icon: iconType.value,
-    text: listText.value
+    text: listText.value,
   };
   if (editMode && editTargetItem) {
     // 編集モードの場合、リストアイテムを更新する
     const oldText = editTargetItem.querySelector('.text').textContent;
-    updatesessionStorageItem(oldText, newItem); // セッションストレージのアイテムを更新
+    updateSessionStorageItem(oldText, newItem); // セッションストレージのアイテムを更新
     editTargetItem.querySelector('.text').textContent = newItem.text; // リストのテキストを更新
     editTargetItem.className = newItem.icon; // アイコンのクラスを更新
   } else {
     // 通常の新規追加処理
-    saveTosessionStorage(newItem);
+    saveToSessionStorage(newItem);
   }
   dialog.close(); // ダイアログを閉じる
   editMode = false; // 編集モードをリセット
   editTargetItem = null; // 編集対象のアイテムをリセット
   loadList();
 });
+
 // セッションストレージのアイテムを更新する関数
-function updatesessionStorageItem(oldText, newItem) {
+function updateSessionStorageItem(oldText, newItem) {
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
 
   // 古いアイテムを探して更新
   storedItems = storedItems.map((item) => {
     if (item.text === oldText) {
+      // 履歴を更新（in history.js）
+      updateHistory({
+        who: listKey === 'self-list' ? 'self' : 'partner',
+        oldItem: oldText,
+        newItem: newItem.text,
+      });
       return newItem; // アイテムを新しい内容で更新
     }
     return item;
@@ -230,17 +242,18 @@ function completeTask() {
 }
 
 function updatePlantImage() {
-  const plantImage = document.getElementById('plantImage');
-  console.log(completedTasks);
-  if (completedTasks >= 0 && completedTasks <= 2) {
-    plantImage.src = './img/plant1.png';
-  } else if (completedTasks >= 3 && completedTasks <= 5) {
-    plantImage.src = './img/plant2.png';
-  } else if (completedTasks >= 6 && completedTasks <= 8) {
-    plantImage.src = './img/plant3.png';
-  } else if (completedTasks >= 9 && completedTasks <= 11) {
-    plantImage.src = './img/plant4.png';
-  } else {
-    plantImage.src = './img/plant5.png';
+  if (getListKey() === 'partner') {
+    const plantImage = document.getElementById('plantImage');
+    if (completedTasks >= 0 && completedTasks <= 2) {
+      plantImage.src = './img/plant1.png';
+    } else if (completedTasks >= 3 && completedTasks <= 5) {
+      plantImage.src = './img/plant2.png';
+    } else if (completedTasks >= 6 && completedTasks <= 8) {
+      plantImage.src = './img/plant3.png';
+    } else if (completedTasks >= 9 && completedTasks <= 11) {
+      plantImage.src = './img/plant4.png';
+    } else {
+      plantImage.src = './img/plant5.png';
+    }
   }
 }

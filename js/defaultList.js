@@ -56,10 +56,30 @@ function loadDefaultList() {
 
   if (historyItems.length === 0) {
     const storedItems = [
-      { who: 'self', type: '登録', action: 'アプリの利用開始', date: '2024年9月10日 14:35' },
-      { who: 'self', type: '登録', action: 'パートナーにグループURLを共有', date: '2024年9月11日 10:20' },
-      { who: 'partner', type: '登録', action: 'リストアイテムを追加', date: '2024年9月29日 13:50' },
-      { who: 'partner', type: '編集', action: 'リストアイテムを編集', date: '2024年9月30日 18:05' }
+      {
+        who: 'self',
+        type: '登録',
+        action: 'アプリの利用開始',
+        date: '2024/9/10 14:35',
+      },
+      {
+        who: 'self',
+        type: '登録',
+        action: 'パートナーにグループURLを共有',
+        date: '2024/9/11 10:20',
+      },
+      {
+        who: 'partner',
+        type: '登録',
+        action: 'リストアイテムを追加',
+        date: '2024/9/29 13:50',
+      },
+      {
+        who: 'partner',
+        type: '編集',
+        action: 'リストアイテムを編集',
+        date: '2024/9/30 18:05',
+      },
     ];
 
     const selfItems = JSON.parse(sessionStorage.getItem('self-list')).reverse();
@@ -70,7 +90,7 @@ function loadDefaultList() {
         who: 'self',
         type: '登録',
         action: `自分がパートナーにしてほしいことリストに「${item.text}」を登録`,
-        date: `2024年9月${d}日 0:00`
+        date: `2024/9/${d} 0:00`,
       });
       d += 1;
     }
@@ -83,7 +103,7 @@ function loadDefaultList() {
         who: 'partner',
         type: '登録',
         action: `パートナーが自分にしてほしいことリストに「${item.text}」を登録`,
-        date: `2024年9月${d}日 0:00`
+        date: `2024/9/${d} 0:00`,
       });
       d += 1;
     }

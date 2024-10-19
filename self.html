@@ -20,20 +20,9 @@
       <dialog id="dialog hidden">
         <div class="header-wrapper">
         <button id="close" type="button"><img src="./img/pageback.png"></button>
-        <p id="text">アイテム追加</p>
+        <p id="text">私がパートナーにしてほしいリストの追加</p>
         </div>
         <div class="dialog-content">
-          <!--
-          <label for="list-type">リストタイプ<br /></label>
-          <select id="list-type">
-            <option value="partner">
-              パートナーがしてもらいたいことリスト
-            </option>
-            <option value="self">
-              自分がパートナーにしてもらいたいことリスト
-            </option></select
-          ><br />
-          -->
           <label for="icon-type">アイコンの種類</label><br />
           <select id="icon-type">
             <option value="cook">料理</option>
@@ -43,9 +32,8 @@
           ><br />
           <label for="item-content">リストアイテム内容</label><br />
           <textarea id="item-content"/></textarea>
-               <!-- ひとまず -->
         <div class="button-flex">
-          <button id="add-item-btn">登録</button>
+          <button id="update-item-btn">更新</button>
           <button id="del-item-btn">削除</button>
            </div>
         </div>
@@ -63,6 +51,7 @@
     </footer>
 
     <script src="./js/defaultList.js"></script>
+    <script src="./js/history.js"></script>
     <script src="./js/list.js"></script>
     <script src="./js/design.js"></script>
   </body>

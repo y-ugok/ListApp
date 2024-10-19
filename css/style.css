@@ -71,11 +71,23 @@ h1 {
   justify-content: center;
   align-items: center;
   border-style: none;
+  background-color: #ffc3b7;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 1px #dbdbdb;
+}
+
+#open-disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
   background-color: #efefef;
   padding: 0.3rem 0.7rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 1px #dbdbdb;
 }
+
 /* ダイアログのスタイル */
 dialog {
   /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
@@ -136,7 +148,7 @@ text-align:left;
   text-align: center;
   margin: 1.7rem 0 0.5rem;
 }
-#add-item-btn {
+#update-item-btn {
   background-color: #ffadbe;
   border-radius: 0.3rem;
   color: white;

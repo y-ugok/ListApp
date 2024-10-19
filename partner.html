@@ -19,28 +19,10 @@
       <!-- <img src="./img/flower-orange.png" alt="" /> -->
       <ul id="list"></ul>
 
-      <!-- ダイアログ -->
+      <!-- ダイアログ（不要だがエラー回避のため温存） -->
       <dialog id="dialog">
-        <p>アイテム追加</p>
-        <div class="flex">
-          <div class="center">
-            <button id="close" type="button">キャンセル</button>
-            <button id="add-item-btn">登録</button>
-          </div>
-        </div>
-        <div class="dialog-content">
-          <label>リストタイプ<br /></label>
-          <label for="icon-type">アイコンの種類</label><br />
-          <select id="icon-type">
-            <option value="cook">料理</option>
-            <option value="communication">コミュニケーション</option>
-            <option value="action">アクション</option>
-            <option value="shopping">ショッピング</option></select
-          ><br />
-          <label for="item-content">リストアイテム内容</label><br />
-          <input type="text" id="item-content" value="" />
-        </div>
-        <!-- ひとまず -->
+        <button id="close" type="button">キャンセル</button>
+        <button id="update-item-btn">登録</button>
         <button id="del-item-btn">削除</button>
       </dialog>
     </main>
@@ -48,13 +30,14 @@
       <div class="icon-wrapper">
         <a href="partner.html"><img src="./img/partner-black.png" /></a>
         <a href="self.html"><img src="./img/you-gray.png" /></a>
-        <button id="open"><img src="./img/plus.png" /></button>
+        <button id="open-disabled" disabled><img src="./img/plus.png" /></button>
         <a href="history-self.html"><img src="img/history-gray.png" /></a>
         <a href="setting.html"><img src="./img/setting-gray.png" /></a>
       </div>
     </footer>
 
     <script src="./js/defaultList.js"></script>
+    <script src="./js/history.js"></script>
     <script src="./js/list.js"></script>
     <script src="./js/design.js"></script>
   </body>

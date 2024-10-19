@@ -15,11 +15,11 @@ window.addEventListener("load", () => {
 // == テーマカラーの適用 == //
 function applyThemeColor(color) {
   // ヘッダーや他の要素に選択されたテーマカラーを適用
-  document.querySelector("header").style.backgroundColor = color;
-  document.getElementById("add-item-btn").style.backgroundColor = color;
-  document.getElementById("del-item-btn").style.color = color;
-  const rectangles = document.querySelectorAll(".rectangle");
-  const removeButtons = document.querySelectorAll(".remove-btn");
+  document.querySelector('header').style.backgroundColor = color;
+  // document.getElementById("add-item-btn").style.backgroundColor = color;
+  // document.getElementById('del-item-btn').style.color = color;
+  const rectangles = document.querySelectorAll('.rectangle');
+  const removeButtons = document.querySelectorAll('.remove-btn');
   rectangles.forEach((rect) => {
     rect.style.backgroundColor = color;
   });
@@ -27,7 +27,7 @@ function applyThemeColor(color) {
     btn.style.backgroundColor = color;
   });
   // addStyleクラスの下線の色を変更
-  const addStyleElements = document.querySelectorAll(".addStyle");
+  const addStyleElements = document.querySelectorAll('.addStyle');
   addStyleElements.forEach((elem) => {
     elem.style.borderBottomColor = color; // 下線の色をテーマカラーに設定
   });
