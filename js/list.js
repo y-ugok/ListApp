@@ -244,13 +244,3 @@ function updatePlantImage() {
     plantImage.src = './img/plant5.png';
   }
 }
-
-
-// テキストフィールドがフォーカスを受けたときの動作
-listText.addEventListener("focus", () => {
-  dialog.style.position = "fixed"; // フォーカス時にモーダルを固定
-  dialog.style.top = "50%"; // 中央に配置
-  dialog.style.left = "50%";
-  dialog.style.transform = "translate(-50%, -50%)";
-});
-
