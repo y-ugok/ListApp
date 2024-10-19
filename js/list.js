@@ -245,17 +245,12 @@ function updatePlantImage() {
   }
 }
 
-// === 植物の成長の画像変化用のコードここまで === //
 
-// テーマカラーの変更ダイアログ
-// const themeColor = document.getElementById("themecolor");
-// const colorModal = document.getElementById("themecolorModal");
-// themeColor.addEventListener("click", showColorModal);
-// function showColorModal() {
-//   colorModal.classList.add("show-from");
-//   colorModal.showModal();
-//   requestAnimationFrame(() => {
-//     // モーダル表示後にクラスを削除してアニメーションを開始
-//     dialog.classList.remove("show-from");
-//   });
-// }
+// テキストフィールドがフォーカスを受けたときの動作
+listText.addEventListener("focus", () => {
+  dialog.style.position = "fixed"; // フォーカス時にモーダルを固定
+  dialog.style.top = "50%"; // 中央に配置
+  dialog.style.left = "50%";
+  dialog.style.transform = "translate(-50%, -50%)";
+});
+
