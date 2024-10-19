@@ -143,12 +143,12 @@ text-align:left;
   justify-content: space-between;
 }
 .center,
-#dialog > p {
+dialog > p {
   font-size: 1rem;
   text-align: center;
   margin: 1.7rem 0 0.5rem;
 }
-#update-item-btn {
+#update-item-btn, #register-item-btn {
   background-color: #ffadbe;
   border-radius: 0.3rem;
   color: white;
@@ -179,7 +179,7 @@ text-align:left;
   padding-left: 0.5rem;
   height: 1.8rem;
 }
-#item-content {
+#item-content, #new-item-content {
   height: 2rem;
   width: 99%;
   margin-bottom: 0.9rem;

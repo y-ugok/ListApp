@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // OKボタンが押された時にローカルストレージを初期化
   confirmResetButton.addEventListener("click", () => {
     // ローカルストレージから全データを削除
-    localStorage.clear();
+    sessionStorage.clear();
+    loadDefaultList();
 
     // ダイアログを閉じる
     resetDialog.close();
