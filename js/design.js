@@ -17,7 +17,10 @@ function applyThemeColor(color) {
   // ヘッダーや他の要素に選択されたテーマカラーを適用
   document.querySelector('header').style.backgroundColor = color;
   document.getElementsByClassName("add-item-btn").style.backgroundColor = color;
-  document.getElementsByClassName("complete-btn").style.backgroundColor = color;
+　const completeButtons = document.getElementsByClassName("complete-btn");
+　Array.from(completeButtons).forEach((btn) => {
+  btn.style.backgroundColor = color;
+　});
   const rectangles = document.querySelectorAll('.rectangle');
   const removeButtons = document.querySelectorAll('.remove-btn');
   rectangles.forEach((rect) => {
