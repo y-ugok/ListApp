@@ -16,8 +16,8 @@ window.addEventListener("load", () => {
 function applyThemeColor(color) {
   // ヘッダーや他の要素に選択されたテーマカラーを適用
   document.querySelector('header').style.backgroundColor = color;
-  // document.getElementById("add-item-btn").style.backgroundColor = color;
-  // document.getElementById('del-item-btn').style.color = color;
+  document.getElementsByClassName("add-item-btn").style.backgroundColor = color;
+  document.getElementsByClassName("complete-btn").style = color;
   const rectangles = document.querySelectorAll('.rectangle');
   const removeButtons = document.querySelectorAll('.remove-btn');
   rectangles.forEach((rect) => {
