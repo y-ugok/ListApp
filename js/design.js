@@ -16,7 +16,6 @@ window.addEventListener("load", () => {
 function applyThemeColor(color) {
   // ヘッダーや他の要素に選択されたテーマカラーを適用
   document.querySelector('header').style.backgroundColor = color;
-  document.getElementsByClassName("add-item-btn").style.backgroundColor = color;
 　const completeButtons = document.getElementsByClassName("complete-btn");
 　Array.from(completeButtons).forEach((btn) => {
   btn.style.backgroundColor = color;
