@@ -17,16 +17,6 @@ li {
   align-items: flex-start;
   font-size: 3vw;
 }
-/* li::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: 0;
-  width: 2.5rem;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-} */
 
 li > button {
   width: 2.1rem;
@@ -40,18 +30,7 @@ main img {
   display: block;
   margin: 0 auto;
 }
-/* .cook::before {
-  background-image: url("../img/cook.png");
-}
-.communication::before {
-  background-image: url("../img/communication.png");
-}
-.action::before {
-  background-image: url("../img/action.png");
-}
-.shopping::before {
-  background-image: url("../img/shopping.png");
-} */
+
 button {
   background-color: transparent;
   border: none;
@@ -96,8 +75,8 @@ li > button {
   padding: 0;
   padding: 0 0.3rem;
 }
-/* ダイアログのスタイル */
-dialog {
+/* 編集ダイアログを開く時 */
+#edit-dialog {
   /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
   top: auto;
 
@@ -121,14 +100,51 @@ dialog {
 }
 
 /* 背景のスタイルは ::backdrop 疑似要素で指定 */
-dialog::backdrop {
+#edit-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2px);
 }
+
 /* ダイアログと背景に CSS トランジションを設定 */
-dialog,
-dialog::backdrop {
+#edit-dialog,
+#edit-dialog::backdrop {
   transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+/* ダイアログと背景に CSS トランジションを設定 */
+#register-dialog,
+#register-dialog::backdrop {
+  transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* 新規追加ダイアログを開く時 */
+#register-dialog {
+  /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
+  top: auto;
+
+  /* デフォルトで最大幅が設定されていて width: 100% にならないので解除 */
+  max-width: none;
+
+  /* デフォルトで fit-content になっていて中身の幅になってしまうので解除 */
+  width: auto;
+
+  /*
+     * デフォルトが auto なので visible にして box-shadow が表示されるようにする
+     * スクロールさせたい場合は子孫要素で overflow: auto などを指定する
+     */
+  overflow: visible;
+
+  padding: 16px;
+  background-color: #fff;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 背景のスタイルは ::backdrop 疑似要素で指定 */
+#register-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
 }
 
 /* ダイアログの表示前、非表示後は下に移動 */
@@ -142,6 +158,7 @@ dialog::backdrop {
 .hide-to::backdrop {
   opacity: 0;
 }
+
 /* .edit-delete-containerが<li>の上に重なるように配置 */
 .edit-delete-container {
   position: absolute; /* 親要素に相対的に位置を設定 */
@@ -169,6 +186,7 @@ edit-delete-container > button {
   border: solid 1px rgba(243, 243, 243, 1);
   font-size: 0.7rem;
 }
+
 .rectangle {
   width: 2.2rem;
   display: flex;

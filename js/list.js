@@ -1,56 +1,72 @@
-'use strict';
-
+"use strict";
 const openButton =
-  document.getElementById('open') || document.getElementById('open-disabled');
-const registerDialog = document.querySelector('#register-dialog');
-const registerButton = document.getElementById('register-item-btn');
-const registerCloseButton = document.getElementById('register-close');
-const editDialog = document.querySelector('#edit-dialog');
-const updateButton = document.getElementById('update-item-btn');
-const deleteButton = document.getElementById('del-item-btn');
-const editCloseButton = document.getElementById('edit-close');
-const iconType = document.getElementById('icon-type');
-const listText = document.getElementById('item-content');
-const newIconType = document.getElementById('new-icon-type');
-const newListText = document.getElementById('new-item-content');
+  document.getElementById("open") || document.getElementById("open-disabled");
+const registerDialog = document.querySelector("#register-dialog");
+const registerButton = document.getElementById("register-item-btn");
+const registerCloseButton = document.getElementById("register-close");
+const editDialog = document.querySelector("#edit-dialog");
+const updateButton = document.getElementById("update-item-btn");
+const deleteButton = document.getElementById("del-item-btn");
+const editCloseButton = document.getElementById("edit-close");
+const iconType = document.getElementById("icon-type");
+const listText = document.getElementById("item-content");
+const newIconType = document.getElementById("new-icon-type");
+const newListText = document.getElementById("new-item-content");
+
 let editTargetItem = null; // 編集対象のアイテムを保存するための変数
 
 // ページに応じてlistKeyを決定
 function getListKey() {
-  if (window.location.pathname.includes('self.html')) {
-    return 'self-list'; // self.html の場合は self-list を使う
+  if (window.location.pathname.includes("self.html")) {
+    return "self-list"; // self.html の場合は self-list を使う
   } else {
-    return 'partner-list'; // partner.html の場合は partner-list を使う
+    return "partner-list"; // partner.html の場合は partner-list を使う
   }
-}
-
-function show() {
-  // モーダル表示前にクラスを付与
-  dialog.classList.add('show-from');
-  dialog.showModal();
-
-  requestAnimationFrame(() => {
-    // モーダル表示後にクラスを削除してアニメーションを開始
-    dialog.classList.remove('show-from');
-  });
 }
 
 // ダイアログを開く・閉じる
-openButton.addEventListener('click', () => {
-  if (getListKey() === 'self-list') {
-    // フィールドをリセットする処理
-    newIconType.value = 'cook'; // デフォルトのアイコンタイプにリセット
-    newListText.value = ''; // テキストフィールドを空にする
-    registerDialog.classList.remove('hidden');
-    registerDialog.showModal();
+openButton.addEventListener("click", () => {
+  // モーダル表示前にクラスを付与
+  registerDialog.classList.add("show-from");
+  registerDialog.showModal();
+
+  requestAnimationFrame(() => {
+    // モーダル表示後にクラスを削除してアニメーションを開始
+    registerDialog.classList.remove("show-from");
+  });
+});
+
+function show() {
+  registerDialog.classList.add("show-from");
+  registerDialog.showModal();
+
+  requestAnimationFrame(() => {
+    // モーダル表示後にクラスを削除してアニメーションを開始
+    registerDialog.classList.remove("show-from");
+  });
+}
+registerCloseButton.addEventListener("click", () => {
+  // モーダル非表示前にクラスを付与してアニメーションを開始
+  registerDialog.classList.add("hide-to");
+
+  registerDialog.addEventListener(
+    "transitionend",
+    () => {
+      // アニメーション終了後にクラスを削除し、モーダルを閉じる
+      registerDialog.classList.remove("hide-to");
+      registerDialog.close();
+    },
+    {
+      once: true,
+    }
+  );
+});
+registerDialog.addEventListener("click", (event) => {
+  if (event.target === registerDialog) {
+    registerDialog.close();
   }
 });
-
-registerCloseButton.addEventListener('click', () => {
-  registerDialog.close();
-});
-
-editCloseButton.addEventListener('click', () => {
+editCloseButton.addEventListener("click", () => {
   editDialog.close();
 });
 
@@ -82,13 +98,13 @@ function loadList() {
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
 
-  const ul = document.getElementById('list');
-  ul.textContent = ''; // 二重に表示されないようにする
+  const ul = document.getElementById("list");
+  ul.textContent = ""; // 二重に表示されないようにする
 
   storedItems.forEach((item) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.classList.add(item.icon);
-    if (listKey === 'self-list') {
+    if (listKey === "self-list") {
       li.innerHTML = `
          <div class="wrapper">
          <div class="rectangle">
@@ -117,11 +133,11 @@ function loadList() {
   });
 
   // アイテム削除ボタンのクリックイベントを追加
-  const completeButtons = document.querySelectorAll('.complete-btn');
+  const completeButtons = document.querySelectorAll(".complete-btn");
   completeButtons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const li = event.target.closest('li');
-      const itemText = li.querySelector('.text').textContent;
+    button.addEventListener("click", (event) => {
+      const li = event.target.closest("li");
+      const itemText = li.querySelector(".text").textContent;
       // セッションストレージから削除
       removeFromSessionStorage(itemText);
       // 履歴に記録（in history.js）
@@ -137,34 +153,49 @@ function addDotsFunctionality() {
   const dotIcons = document.querySelectorAll('li img[src="./img/dots.png"]');
 
   dotIcons.forEach((dotIcon) => {
-    dotIcon.addEventListener('click', (event) => {
-      const itemElement = event.target.closest('li');
+    dotIcon.addEventListener("click", (event) => {
+      const itemElement = event.target.closest("li");
       editTargetItem = itemElement; // 編集対象のリストアイテムを保持
 
       // ダイアログに既存のリストアイテムの内容をセット
-      const itemText = itemElement.querySelector('.text').textContent;
-      const itemIcon = itemElement.classList.contains('cook')
-        ? 'cook'
-        : itemElement.classList.contains('communication')
-        ? 'communication'
-        : itemElement.classList.contains('action')
-        ? 'action'
-        : 'shopping';
+      const itemText = itemElement.querySelector(".text").textContent;
+      const itemIcon = itemElement.classList.contains("cook")
+        ? "cook"
+        : itemElement.classList.contains("communication")
+        ? "communication"
+        : itemElement.classList.contains("action")
+        ? "action"
+        : "shopping";
 
       iconType.value = itemIcon; // アイコンタイプを設定
       listText.value = itemText; // リストの内容を設定
 
-      deleteButton.addEventListener('click', () => {
+      deleteButton.addEventListener("click", () => {
         itemElement.remove();
       });
+      // == モーダルを表示する==//
+      editDialog.classList.add("show-from");
+      editDialog.showModal();
 
-      editDialog.showModal(); // ダイアログを開く
+      requestAnimationFrame(() => {
+        // モーダル表示後にクラスを削除してアニメーションを開始
+        editDialog.classList.remove("show-from");
+      });
     });
   });
 }
-
+/* 背景をクリックした時に編集ダイアログを閉じる */
+editDialog.addEventListener("click", (event) => {
+  // 背景がクリックされた場合は閉じる。
+  // ダイアログの見た目のスタイルは .inner に設定しているので、
+  // コンテンツ部分がクリックされた場合、target は必ず .inner かその子孫要素になる。
+  // したがって、target === dialog の時は背景がクリックされたとみなせる。
+  if (event.target === editDialog) {
+    editDialog.close();
+  }
+});
 // 削除ボタンのクリックイベント
-deleteButton.addEventListener('click', () => {
+deleteButton.addEventListener("click", () => {
   removeFromSessionStorage(listText.value); // セッションストレージから削除
   removeHistory(listText.value); // 履歴を更新（in history.js）
   // listText.remove(); // DOMから削除
@@ -172,10 +203,10 @@ deleteButton.addEventListener('click', () => {
 });
 
 // アイテム更新ボタンの処理
-updateButton.addEventListener('click', () => {
+updateButton.addEventListener("click", () => {
   // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
   if (!listText.value.trim()) {
-    alert('リストアイテムの内容を入力してください。');
+    alert("リストアイテムの内容を入力してください。");
     return; // 処理を終了する
   }
   const newItem = {
@@ -184,15 +215,15 @@ updateButton.addEventListener('click', () => {
   };
 
   // 編集モードの場合、リストアイテムを更新する
-  const oldText = editTargetItem.querySelector('.text').textContent;
+  const oldText = editTargetItem.querySelector(".text").textContent;
 
   if (oldText === listText.value) {
-    alert('アイテムの内容が同じです');
+    alert("アイテムの内容が同じです");
     return; // 処理を終了する
   }
 
   updateSessionStorageItem(oldText, newItem); // セッションストレージのアイテムを更新
-  editTargetItem.querySelector('.text').textContent = newItem.text; // リストのテキストを更新
+  editTargetItem.querySelector(".text").textContent = newItem.text; // リストのテキストを更新
   editTargetItem.className = newItem.icon; // アイコンのクラスを更新
 
   editDialog.close(); // ダイアログを閉じる
@@ -201,10 +232,10 @@ updateButton.addEventListener('click', () => {
 });
 
 // アイテム追加ボタンの処理
-registerButton.addEventListener('click', () => {
+registerButton.addEventListener("click", () => {
   // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
   if (!newListText.value.trim()) {
-    alert('リストアイテムの内容を入力してください。');
+    alert("リストアイテムの内容を入力してください。");
     return; // 処理を終了する
   }
   const newItem = {
@@ -250,18 +281,18 @@ function completeTask() {
 }
 
 function updatePlantImage() {
-  if (getListKey() === 'partner') {
-    const plantImage = document.getElementById('plantImage');
+  if (getListKey() === "partner") {
+    const plantImage = document.getElementById("plantImage");
     if (completedTasks >= 0 && completedTasks <= 2) {
-      plantImage.src = './img/plant1.png';
+      plantImage.src = "./img/plant1.png";
     } else if (completedTasks >= 3 && completedTasks <= 5) {
-      plantImage.src = './img/plant2.png';
+      plantImage.src = "./img/plant2.png";
     } else if (completedTasks >= 6 && completedTasks <= 8) {
-      plantImage.src = './img/plant3.png';
+      plantImage.src = "./img/plant3.png";
     } else if (completedTasks >= 9 && completedTasks <= 11) {
-      plantImage.src = './img/plant4.png';
+      plantImage.src = "./img/plant4.png";
     } else {
-      plantImage.src = './img/plant5.png';
+      plantImage.src = "./img/plant5.png";
     }
   }
 }
