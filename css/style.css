@@ -71,7 +71,7 @@ h1 {
   justify-content: center;
   align-items: center;
   border-style: none;
-  background-color: #ffc3b7;
+  /* background-color: #ffc3b7; */
   padding: 0.3rem 0.7rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 1px #dbdbdb;
@@ -122,8 +122,8 @@ dialog > p {
   text-align: center;
   margin-bottom: 0;
 }
-#reset-dialog{
-text-align:left;
+#reset-dialog {
+  text-align: left;
 }
 /* ダイアログの表示前、非表示後は下に移動 */
 .show-from,
@@ -148,7 +148,8 @@ dialog > p {
   text-align: center;
   margin: 1.7rem 0 0.5rem;
 }
-#update-item-btn, #register-item-btn {
+#update-item-btn,
+#register-item-btn {
   background-color: #ffadbe;
   border-radius: 0.3rem;
   color: white;
@@ -179,13 +180,14 @@ dialog > p {
   padding-left: 0.5rem;
   height: 1.8rem;
 }
-#item-content, #new-item-content {
+#item-content,
+#new-item-content {
   height: 2rem;
   width: 99%;
   margin-bottom: 0.9rem;
   border-radius: 4px;
-  border: 0.1px solid #d9d9d9; 
-  font-size:16px;
+  border: 0.1px solid #d9d9d9;
+  font-size: 16px;
 }
 .flex {
   padding-bottom: 0.5rem;
@@ -216,7 +218,6 @@ label {
 }
 .header-wrapper > p {
   margin: 0 auto;
-  margin-left: 26%;
 }
 #del-item-btn {
   background: transparent;
