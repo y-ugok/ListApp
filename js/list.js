@@ -20,7 +20,7 @@ function getListKey() {
   if (window.location.pathname.includes("self.html")) {
     return "self-list"; // self.html の場合は self-list を使う
   } else {
-    return "partner-list"; // partner.html の場合は partner-list を使う
+    return "partner-list"; // index.html の場合は partner-list を使う
   }
 }
 
@@ -271,29 +271,31 @@ function updateSessionStorageItem(oldText, newItem) {
 window.onload = () => {
   loadList();
   addDotsFunctionality(); // dots.png の機能を追加
+  updatePlantImage();
 };
+
 // === 植物成長の画像変化用のコード === //
-let completedTasks = 0;
+// === 植物成長の画像変化用のコード === //
+let completedTasks = parseInt(localStorage.getItem("completedTasks")) || 0;
 
 function completeTask() {
   completedTasks++;
+  localStorage.setItem("completedTasks", completedTasks); // completedTasksをlocalStorageに保存
   updatePlantImage();
 }
 
+// 植物の画像を更新する関数
 function updatePlantImage() {
-  console.log(completedTasks);
-  if (getListKey() === "partner-list") {
-    const plantImage = document.getElementById("plantImage");
-    if (completedTasks >= 0 && completedTasks <= 2) {
-      plantImage.src = "./img/plant1.png";
-    } else if (completedTasks >= 3 && completedTasks <= 5) {
-      plantImage.src = "./img/plant2.png";
-    } else if (completedTasks >= 6 && completedTasks <= 8) {
-      plantImage.src = "./img/plant3.png";
-    } else if (completedTasks >= 9 && completedTasks <= 11) {
-      plantImage.src = "./img/plant4.png";
-    } else {
-      plantImage.src = "./img/plant5.png";
-    }
+  const plantImage = document.getElementById("plantImage");
+  if (completedTasks >= 0 && completedTasks <= 2) {
+    plantImage.src = "./img/plant1.png";
+  } else if (completedTasks >= 3 && completedTasks <= 5) {
+    plantImage.src = "./img/plant2.png";
+  } else if (completedTasks >= 6 && completedTasks <= 8) {
+    plantImage.src = "./img/plant3.png";
+  } else if (completedTasks >= 9 && completedTasks <= 11) {
+    plantImage.src = "./img/plant4.png";
+  } else {
+    plantImage.src = "./img/plant5.png";
   }
 }

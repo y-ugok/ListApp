@@ -19,14 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
   confirmResetButton.addEventListener("click", () => {
     // ローカルストレージから全データを削除
     sessionStorage.clear();
+    localStorage.clear();
     loadDefaultList();
-
+    // 初期状態で設定されたデフォルトのリストデータが再度読み込まれる
     // ダイアログを閉じる
     resetDialog.close();
 
     // 初期化完了のメッセージを表示するか、ページをリロードして変更を反映
     alert("データを初期化しました");
-    location.reload(); // ページをリロードして初期状態を反映
+    location.reload();
   });
 
   resetDialog.addEventListener("click", (event) => {
@@ -83,12 +84,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // テーマカラーの適用関数
   function applyThemeColor(color) {
-    localStorage.setItem('themeColor', color); // 選択した色をローカルストレージに保存
-    document.querySelector('header').style.backgroundColor = color;
-    document.getElementById('confirm-reset').style.backgroundColor = color;
+    localStorage.setItem("themeColor", color); // 選択した色をローカルストレージに保存
+    document.querySelector("header").style.backgroundColor = color;
+    document.getElementById("confirm-reset").style.backgroundColor = color;
     // document.getElementById("del-item-btn").style.backgroundColor = color;
-    const rectangles = document.querySelectorAll('.rectangle');
-    const removeButtons = document.querySelectorAll('.remove-btn');
+    const rectangles = document.querySelectorAll(".rectangle");
+    const removeButtons = document.querySelectorAll(".remove-btn");
     rectangles.forEach((rect) => {
       rect.style.backgroundColor = color;
     });
