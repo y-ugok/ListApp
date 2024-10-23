@@ -301,6 +301,3 @@ function updatePlantImage() {
     plantImage.src = "./img/plant5.png";
   }
 }
-listText.addEventListener("focus", function (e) {
-  e.stopPropagation(); // モーダルが動かないようにする
-});
