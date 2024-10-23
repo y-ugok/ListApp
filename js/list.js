@@ -287,6 +287,8 @@ function completeTask() {
 // 植物の画像を更新する関数
 function updatePlantImage() {
   const plantImage = document.getElementById("plantImage");
+  // list.jsの時にsrcエラーの回避
+  if (!plantImage) return;
   if (completedTasks >= 0 && completedTasks <= 2) {
     plantImage.src = "./img/plant1.png";
   } else if (completedTasks >= 3 && completedTasks <= 5) {
@@ -299,3 +301,6 @@ function updatePlantImage() {
     plantImage.src = "./img/plant5.png";
   }
 }
+listText.addEventListener("click", function (e) {
+  e.preventDefault();
+});
