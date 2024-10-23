@@ -232,13 +232,3 @@ li.shopping img:first-child {
 #close > img {
   width: 2rem;
 }
-
-/* モーダルの固定 */
-#register-dialog,
-#edit-dialog {
-  position: fixed; /* 追加 */
-  top: 50%; /* 中央に配置 */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* 必要に応じて他のスタイルも追加 */
-}
