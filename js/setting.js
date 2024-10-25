@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // テーマカラーの適用関数
   function applyThemeColor(color) {
+    console.log(color);
     localStorage.setItem("themeColor", color); // 選択した色をローカルストレージに保存
     document.querySelector("header").style.backgroundColor = color;
     document.getElementById("confirm-reset").style.backgroundColor = color;
