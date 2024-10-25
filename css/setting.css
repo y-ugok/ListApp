@@ -216,10 +216,9 @@ dialog {
 }
 .wrapper > button {
   border-radius: 0.5rem;
-  padding: 0.5rem 0.3rem;
+  width: 5.5rem;
   border: solid 1.3px lightgray;
   margin: 0.6rem;
-  width: 5rem;
 }
 #colorClose {
   margin-right: 5.3rem;
