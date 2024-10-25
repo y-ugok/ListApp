@@ -214,15 +214,13 @@ dialog {
   padding: 0;
   margin: 0 auto;
 }
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
+.wrapper > button {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.3rem;
+  border: solid 1.3px lightgray;
+  margin: 0.6rem;
+  width: 5rem;
 }
-
 #colorClose {
   margin-right: 5.3rem;
 }
@@ -242,15 +240,15 @@ button {
   width: 2rem;
   height: 2rem;
 }
-.wrapper > button {
-  background-color: #383838;
+/* .wrapper > button {
   color: white;
   border-radius: 0.5rem;
   padding: 0.5rem 0.3rem;
-  border: solid 1px lightgray;
+  border: solid 1.3px lightgray;
   margin: 0.6rem;
   width: 5rem;
-}
+  color: black;
+} */
 .flex > p {
   margin: 0;
 }
@@ -270,4 +268,9 @@ button {
 }
 #reset-dialog > p {
   text-align: left;
+}
+
+.selected-button {
+  background-color: black;
+  color: white;
 }

@@ -103,9 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       document.querySelectorAll(".wrapper button").forEach((btn) => {
         btn.textContent = "適用";
+        btn.classList.remove("selected-button");
       });
 
       this.textContent = "適用中";
+      this.classList.add("selected-button");
 
       let selectedColor;
       switch (this.id) {
