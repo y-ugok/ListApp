@@ -46,10 +46,10 @@ li {
   background-color: white;
   border: 1px solid #ffd88a;
 }
-.wrapper {
-  width: 88%;
-  margin: 0 auto;
+#list {
+  padding: 0;
 }
+
 .lightgray {
   font-size: 0.7rem;
   color: rgb(136, 133, 133);
@@ -58,14 +58,6 @@ li {
 .list-flex {
   display: flex;
   flex-direction: column; /* 縦に並べる */
-}
-
-.list-content {
-  width: 100%;
-  /* background-color: #545454; */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 
 .dots {
@@ -83,6 +75,7 @@ li {
 .text {
   margin-top: 0.6rem;
 }
+
 p {
   font-weight: bold;
   font-size: 0.8rem;
@@ -90,4 +83,14 @@ p {
 }
 a {
   text-decoration: none;
+}
+li {
+  background-color: white;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem;
+}
+
+.list-flex {
+  width: 80%;
+  margin: 0 auto;
 }

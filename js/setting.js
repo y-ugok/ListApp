@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".wrapper button").forEach((button) => {
     button.addEventListener("click", function () {
       document.querySelectorAll(".wrapper button").forEach((btn) => {
-        btn.textContent = "適用する";
+        btn.textContent = "適用";
       });
 
       this.textContent = "適用中";

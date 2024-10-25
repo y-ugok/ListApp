@@ -211,6 +211,7 @@ edit-delete-container > button {
   width: 1rem;
   height: 100%;
   background-color: #ffc7be;
+  margin: 0;
 }
 .half-circle {
   width: 2rem; /* 半円の幅 */

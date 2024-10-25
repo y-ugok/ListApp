@@ -208,7 +208,7 @@ dialog[open] {
   align-items: center;
   margin: 1em;
   padding: 0;
-  border-style:none;
+  border-style: none;
 }
 dialog {
   padding: 0;
@@ -227,9 +227,6 @@ button {
   margin-right: 5.3rem;
 }
 
-.beige {
-  background-color: #f6f6f6;
-}
 .wrapper {
   width: 80%;
   display: flex;
@@ -246,9 +243,10 @@ button {
   height: 2rem;
 }
 .wrapper > button {
-  background-color: white;
-  border-radius: 0.3rem;
-  padding: 0 0.7rem;
+  background-color: #383838;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.3rem;
   border: solid 1px lightgray;
   margin: 0.6rem;
   width: 5rem;
@@ -270,6 +268,6 @@ button {
   left: 0;
   margin: auto;
 }
-#reset-dialog > p{
-text-align:left;
+#reset-dialog > p {
+  text-align: left;
 }
