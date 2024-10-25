@@ -28,8 +28,8 @@ function getListKey() {
 openButton.addEventListener("click", () => {
   // モーダル表示前にクラスを付与
   registerDialog.classList.add("show-from");
+  newListText.value = "";
   registerDialog.showModal();
-
   requestAnimationFrame(() => {
     // モーダル表示後にクラスを削除してアニメーションを開始
     registerDialog.classList.remove("show-from");
@@ -207,7 +207,7 @@ updateButton.addEventListener("click", () => {
   // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
   if (!listText.value.trim()) {
     alert("リストアイテムの内容を入力してください。");
-    return; // 処理を終了する
+    return; // 関数を終了する
   }
   const newItem = {
     icon: iconType.value,
@@ -219,7 +219,7 @@ updateButton.addEventListener("click", () => {
 
   if (oldText === listText.value) {
     alert("アイテムの内容が同じです");
-    return; // 処理を終了する
+    return; // 関数を終了する
   }
 
   updateSessionStorageItem(oldText, newItem); // セッションストレージのアイテムを更新
@@ -230,9 +230,18 @@ updateButton.addEventListener("click", () => {
   editTargetItem = null; // 編集対象のアイテムをリセット
   loadList();
 });
-
+const MAX_LIST_ITEMS = 5;
 // アイテム追加ボタンの処理
 registerButton.addEventListener("click", () => {
+  const listKey = "self-list"; // 現在のページに基づいてlistKeyを取得
+  let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
+
+  // リストの数が5個以上の場合、エラーメッセージを表示して処理を終了
+  if (storedItems.length >= MAX_LIST_ITEMS) {
+    alert("私がパートナーにしてほしいことリストは5つまでに制限されてます");
+    return; // 処理を終了する
+  }
+
   // バリデーション: リストアイテムの内容が空の場合は追加を許可しない
   if (!newListText.value.trim()) {
     alert("リストアイテムの内容を入力してください。");
@@ -274,7 +283,6 @@ window.onload = () => {
   updatePlantImage();
 };
 
-// === 植物成長の画像変化用のコード === //
 // === 植物成長の画像変化用のコード === //
 let completedTasks = parseInt(localStorage.getItem("completedTasks")) || 0;
 
