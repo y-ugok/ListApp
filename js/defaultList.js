@@ -8,16 +8,19 @@ function loadDefaultList() {
     const storedItems = [
       {
         icon: "cook",
-        text: "私の好きなご飯をパートナーに作ってもらいたいわ",
+        text: "私の好きなご飯を作ってもらえると嬉しいな",
       },
       {
         icon: "communication",
-        text: "1日1つ以上誉め言葉をかけてほしいわ",
+        text: "1日1つ以上誉め言葉をかけてほしい",
       },
-      { icon: "action", text: "疲れている時にマッサージしてほしいわ" },
+      {
+        icon: "action",
+        text: "疲れている時にマッサージしてもらえると助かるな",
+      },
       {
         icon: "communication",
-        text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しいわ",
+        text: "1日1回以上は感謝の気持ちを伝えてほしいな",
       },
       // {
       //   icon: "shopping",
@@ -33,13 +36,13 @@ function loadDefaultList() {
     const storedItems = [
       {
         icon: "cook",
-        text: "私の好きなご飯をパートナーに作ってもらいたい",
+        text: "好きなご飯を作ってもらいたい",
       },
       {
         icon: "communication",
         text: "1日1つ以上誉め言葉をかけてほしい",
       },
-      { icon: "action", text: "疲れている時にマッサージ" },
+      { icon: "action", text: "疲れている時にマッサージしてほしい" },
       {
         icon: "communication",
         text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しい",
