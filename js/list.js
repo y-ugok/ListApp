@@ -238,7 +238,7 @@ registerButton.addEventListener("click", () => {
 
   // リストの数が5個以上の場合、エラーメッセージを表示して処理を終了
   if (storedItems.length >= MAX_LIST_ITEMS) {
-    alert("私がパートナーにしてほしいことリストは5つまでに制限されてます");
+    alert("私がパートナーにしてほしいことリストは5つまでに制限されています");
     return; // 処理を終了する
   }
 
