@@ -165,7 +165,9 @@ function addDotsFunctionality() {
         ? "communication"
         : itemElement.classList.contains("action")
         ? "action"
-        : "shopping";
+        : itemElement.classList.contains("shopping")
+        ? "shopping"
+        : "cleaning";
 
       iconType.value = itemIcon; // アイコンタイプを設定
       listText.value = itemText; // リストの内容を設定

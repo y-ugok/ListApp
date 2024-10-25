@@ -11,11 +11,7 @@
     <header></header>
     <main>
       <h1>私がパートナーにしてほしいことリスト</h1>
-
-      <!-- ほしいことリスト
-      <img src="./img/flower-orange.png" alt="" /> -->
       <ul id="list"></ul>
-
       <!-- 編集ダイアログ -->
       <dialog id="edit-dialog">
         <div class="inner">
@@ -55,10 +51,12 @@
           <label for="icon-type">アイコンの種類</label><br />
           <select id="new-icon-type">
             <option value="cook">料理</option>
+            <option value="cleaning">掃除</option>
             <option value="communication">会話</option>
             <option value="action">行動</option>
-            <option value="shopping">買い物</option></select
-          ><br />
+            <option value="shopping">買い物</option>
+          </select>
+          <br />
           <label for="new-item-content">リストアイテム内容</label><br />
           <textarea id="new-item-content"></textarea>
           <div class="button-flex">
