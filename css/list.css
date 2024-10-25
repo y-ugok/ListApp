@@ -132,8 +132,7 @@ li > button {
      * スクロールさせたい場合は子孫要素で overflow: auto などを指定する
      */
   overflow: visible;
-
-  padding: 16px;
+  padding: 0.2rem;
   background-color: #fff;
   border: none;
   border-radius: 16px 16px 0 0;
