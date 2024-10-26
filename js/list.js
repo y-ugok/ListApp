@@ -55,10 +55,10 @@ registerCloseButton.addEventListener("click", () => {
       // アニメーション終了後にクラスを削除し、モーダルを閉じる
       registerDialog.classList.remove("hide-to");
       registerDialog.close();
-    },
+    }, //transitioneイベントが発生した時に実行される
     {
       once: true,
-    }
+    } // イベントリスナーが一度だけ呼び出される
   );
 });
 registerDialog.addEventListener("click", (event) => {
@@ -92,9 +92,6 @@ function removeFromSessionStorage(itemText) {
 
 // 初期データの読み込みと表示
 function loadList() {
-  // defaultList.js
-  loadDefaultList();
-
   const listKey = getListKey(); // 現在のページに基づいてlistKeyを取得
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
 
@@ -218,9 +215,9 @@ updateButton.addEventListener("click", () => {
 
   // 編集モードの場合、リストアイテムを更新する
   const oldText = editTargetItem.querySelector(".text").textContent;
-
-  if (oldText === listText.value) {
-    alert("アイテムの内容が同じです");
+  const oldIcon = editTargetItem.classList.value;
+  if (oldText === listText.value && oldIcon === newItem.icon) {
+    alert("アイテムの内容とアイコンが同じです");
     return; // 関数を終了する
   }
 
@@ -232,6 +229,7 @@ updateButton.addEventListener("click", () => {
   editTargetItem = null; // 編集対象のアイテムをリセット
   loadList();
 });
+
 const MAX_LIST_ITEMS = 5;
 // アイテム追加ボタンの処理
 registerButton.addEventListener("click", () => {
