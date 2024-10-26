@@ -14,7 +14,6 @@ const newIconType = document.getElementById("new-icon-type");
 const newListText = document.getElementById("new-item-content");
 
 let editTargetItem = null; // 編集対象のアイテムを保存するための変数
-
 // ページに応じてlistKeyを決定
 function getListKey() {
   if (window.location.pathname.includes("self.html")) {
@@ -23,6 +22,7 @@ function getListKey() {
     return "partner-list"; // index.html の場合は partner-list を使う
   }
 }
+loadDefaultList();
 
 // ダイアログを開く・閉じる
 openButton.addEventListener("click", () => {
