@@ -217,7 +217,7 @@ dialog {
 .wrapper > button {
   border-radius: 0.5rem;
   width: 3.7rem;
-  border: solid 1.3px lightgray;
+  border: solid 1.3px #fff8e3;
   margin: 0.6rem;
 }
 #colorClose {

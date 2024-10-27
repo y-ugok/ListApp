@@ -137,17 +137,6 @@ dialog > p {
   translate: 0 100%;
 }
 
-/* ダイアログの表示前、非表示後は背景を透明にする */
-/* .show-from::backdrop,
-.hide-to::backdrop {
-  opacity: 0;
-} */
-/* ダイアログ */
-.button-flex {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 .center,
 dialog > p {
   font-size: 1rem;
@@ -214,6 +203,7 @@ label {
 }
 .button-flex {
   display: flex;
+  justify-content: space-between;
   width: 80%;
   margin: 0 auto;
 }
@@ -237,6 +227,6 @@ label {
 #plantContainer > img {
   width: 30%;
 }
-#register-dialog > .button-flex {
+#new-item-content + .button-flex {
   width: 100%;
 }
