@@ -3,11 +3,11 @@ window.addEventListener("load", () => {
   let savedColor = localStorage.getItem("themeColor");
 
   if (!savedColor) {
-    savedColor = "#FFC3B7"; // デフォルトの色
+    savedColor = "#FFC3B7";
   }
   applyThemeColor(savedColor);
 
-  // ボタンのクリックイベントを追加
+  //リストアイテムを追加して更新すると色がデフォルトに戻る問題の解消
   const updateButton = document.getElementById("update-item-btn");
   const registerButton = document.getElementById("register-item-btn");
 
@@ -62,4 +62,9 @@ function applyThemeColor(color) {
     elem.style.borderBottomColor = color; // 下線の色をテーマカラーに設定
   });
   console.log(color); // 取得したテーマカラーを確認
+
+  const confirmReset = document.getElementById("confirm-reset");
+  if (confirmReset) {
+    confirmReset.style.backgroundColor = color;
+  }
 }

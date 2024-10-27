@@ -237,3 +237,6 @@ label {
 #plantContainer > img {
   width: 30%;
 }
+#register-dialog > .button-flex {
+  width: 100%;
+}

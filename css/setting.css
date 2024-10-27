@@ -25,7 +25,7 @@ a {
   font-size: 3.5vw;
   /* margin-top: 0.5rem; */
   background-color: white;
-  border: 1px solid #ffd88a;
+  border: 1px solid #ebebeb;
 }
 
 body {
@@ -197,7 +197,7 @@ dialog {
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   transform: translateY(100%); /* 最初は画面外に隠れている */
-  transition: transform 0.3s ease-out; /* スライドインのアニメーション */
+  transition: transform 0.3s ease-out; /* スライドインのアニメーション 開始時は速く終了に近づくにつれ緩やかに変化*/
 }
 
 dialog[open] {
@@ -216,7 +216,7 @@ dialog {
 }
 .wrapper > button {
   border-radius: 0.5rem;
-  width: 4.3rem;
+  width: 3.7rem;
   border: solid 1.3px lightgray;
   margin: 0.6rem;
 }

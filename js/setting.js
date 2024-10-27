@@ -1,135 +1,130 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // ダイアログとボタンの参照を取得
-  const resetDialog = document.getElementById("reset-dialog");
-  const resetButton = document.getElementById("reset-btn");
-  const cancelResetButton = document.getElementById("cancel-reset");
-  const confirmResetButton = document.getElementById("confirm-reset");
+document.addEventListener("DOMContentLoaded", () => {
+  let savedColor = localStorage.getItem("themeColor") || "#FFBDB1";
+  applyThemeColor(savedColor);
+  setButtonState(savedColor);
+});
 
-  // 初期化ボタンが押された時に確認ダイアログを表示
-  resetButton.addEventListener("click", () => {
-    resetDialog.showModal();
-  });
+const resetDialog = document.getElementById("reset-dialog");
+const resetButton = document.getElementById("reset-btn");
+const cancelResetButton = document.getElementById("cancel-reset");
+const confirmResetButton = document.getElementById("confirm-reset");
 
-  // キャンセルボタンが押された時にダイアログを閉じる
-  cancelResetButton.addEventListener("click", () => {
+resetButton.addEventListener("click", () => {
+  resetDialog.showModal();
+});
+
+cancelResetButton.addEventListener("click", () => {
+  resetDialog.close();
+});
+
+confirmResetButton.addEventListener("click", () => {
+  sessionStorage.clear();
+  localStorage.clear();
+  loadDefaultList();
+  resetDialog.close();
+  alert("データを初期化しました");
+  setButtonState("#FFBDB1");
+  applyThemeColor("#FFBDB1");
+});
+
+resetDialog.addEventListener("click", (event) => {
+  if (event.target === resetDialog) {
     resetDialog.close();
+  }
+  //event.targetはクリックされた要素、もし外側をクリックした場合はdialogクラスを選択
+});
+
+const colorModal = document.getElementById("colorModal");
+const colorButton = document.getElementById("colorButton");
+const colorClose = document.getElementById("colorClose");
+
+colorButton.addEventListener("click", show);
+
+function show() {
+  colorModal.classList.add("show-from");
+  colorModal.showModal();
+  requestAnimationFrame(() => {
+    colorModal.classList.remove("show-from");
   });
+  // アニメーション効果が完了した後にスタイルを戻す
+}
 
-  // OKボタンが押された時にローカルストレージを初期化
-  confirmResetButton.addEventListener("click", () => {
-    // ローカルストレージから全データを削除
-    sessionStorage.clear();
-    localStorage.clear();
-    loadDefaultList();
-    // 初期状態で設定されたデフォルトのリストデータが再度読み込まれる
-    // ダイアログを閉じる
-    resetDialog.close();
+colorModal.addEventListener("click", (event) => {
+  if (event.target === colorModal) {
+    close();
+  }
+});
 
-    // 初期化完了のメッセージを表示するか、ページをリロードして変更を反映
-    alert("データを初期化しました");
-    location.reload();
-  });
+colorClose.addEventListener("click", close);
 
-  resetDialog.addEventListener("click", (event) => {
-    if (event.target === resetDialog) {
-      resetDialog.close();
+function close() {
+  colorModal.classList.add("hide-to");
+  colorModal.addEventListener(
+    "transitionend",
+    // cssのトランジションが完了した時に発火
+    () => {
+      colorModal.classList.remove("hide-to");
+      colorModal.close();
+    },
+    { once: true }
+    // このイベントリスナーが1度だけ実行されてその後自動的に削除
+  );
+}
+
+function setButtonState(color) {
+  const buttons = {
+    "#FFBDB1": document.getElementById("red"),
+    "#FFEC9B": document.getElementById("yellow"),
+    "#BFF0B1": document.getElementById("green"),
+    "#B1D4FF": document.getElementById("blue"),
+  };
+
+  Object.keys(buttons).forEach((key) => {
+    //buttons:プロパティが返されるオブジェクト
+    if (key === color) {
+      buttons[key].textContent = "適用中";
+      buttons[key].classList.add("selected-button");
+    } else {
+      buttons[key].textContent = "適用";
+      buttons[key].classList.remove("selected-button");
     }
   });
+}
 
-  //===== 色の変化モーダル =====//
-  const colorModal = document.getElementById("colorModal");
-  const colorButton = document.getElementById("colorButton");
-  const colorClose = document.getElementById("colorClose");
-
-  colorButton.addEventListener("click", show);
-
-  function show() {
-    colorModal.classList.add("show-from");
-    colorModal.showModal();
-    requestAnimationFrame(() => {
-      colorModal.classList.remove("show-from");
-    });
-  }
-
-  colorModal.addEventListener("click", (event) => {
-    if (event.target === colorModal) {
-      close();
-    }
+function applyThemeColor(color) {
+  document.querySelector("header").style.backgroundColor = color;
+  const rectangles = document.querySelectorAll(".rectangle");
+  const removeButtons = document.querySelectorAll(".remove-btn");
+  rectangles.forEach((rect) => {
+    rect.style.backgroundColor = color;
   });
-
-  colorClose.addEventListener("click", close);
-  function close() {
-    colorModal.classList.add("hide-to");
-    colorModal.addEventListener(
-      "transitionend",
-      () => {
-        colorModal.classList.remove("hide-to");
-        colorModal.close();
-      },
-      { once: true }
-    );
-  }
-
-  // == テーマカラーの適用 ==//
-  window.addEventListener("load", () => {
-    let savedColor = localStorage.getItem("themeColor");
-
-    if (!savedColor) {
-      savedColor = "#FFC3B7"; // デフォルトの色
-    }
-
-    // テーマカラーを適用
-    applyThemeColor(savedColor);
+  removeButtons.forEach((btn) => {
+    btn.style.backgroundColor = color;
   });
-
-  // テーマカラーの適用関数
-  function applyThemeColor(color) {
-    console.log(color);
-    localStorage.setItem("themeColor", color); // 選択した色をローカルストレージに保存
-    document.querySelector("header").style.backgroundColor = color;
-    document.getElementById("confirm-reset").style.backgroundColor = color;
-    // document.getElementById("del-item-btn").style.backgroundColor = color;
-    const rectangles = document.querySelectorAll(".rectangle");
-    const removeButtons = document.querySelectorAll(".remove-btn");
-    rectangles.forEach((rect) => {
-      rect.style.backgroundColor = color;
-    });
-    removeButtons.forEach((btn) => {
-      btn.style.backgroundColor = color;
-    });
-  }
-
-  // カラーボタンのクリックイベント
-  document.querySelectorAll(".wrapper button").forEach((button) => {
-    button.addEventListener("click", function () {
-      document.querySelectorAll(".wrapper button").forEach((btn) => {
-        btn.textContent = "適用";
-        btn.classList.remove("selected-button");
-      });
-
-      this.textContent = "適用中";
-      this.classList.add("selected-button");
-
-      let selectedColor;
-      switch (this.id) {
-        case "red":
-          selectedColor = "#FFBDB1"; // 赤色
-          break;
-        case "yellow":
-          selectedColor = "#FFEC9B"; // 黄色
-          break;
-        case "green":
-          selectedColor = "#BFF0B1"; // 緑色
-          break;
-        case "blue":
-          selectedColor = "#B1D4FF"; // 青色
-          break;
-        default:
-          selectedColor = "#FFC3B7"; // デフォルトカラー
-      }
-
-      // テーマカラーを適用し、ローカルストレージに保存
-      applyThemeColor(selectedColor);
-    });
+}
+let selectedColor;
+document.querySelectorAll(".wrapper button").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const buttonId = event.target.id;
+    switch (buttonId) {
+      case "red":
+        selectedColor = "#FFBDB1";
+        break;
+      case "yellow":
+        selectedColor = "#FFEC9B";
+        break;
+      case "green":
+        selectedColor = "#BFF0B1";
+        break;
+      case "blue":
+        selectedColor = "#B1D4FF";
+        break;
+      default:
+        selectedColor = "#FFC3B7";
+    }
+    localStorage.setItem("themeColor", selectedColor);
+    setButtonState(selectedColor);
+    applyThemeColor(selectedColor);
+    console.log(selectedColor);
   });
 });
