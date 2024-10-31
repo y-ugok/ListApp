@@ -8,24 +8,20 @@ function loadDefaultList() {
     const storedItems = [
       {
         icon: "cook",
-        text: "私の好きなご飯を作ってもらえると嬉しいな",
+        text: "好きなご飯を作ってもらいたいな",
       },
       {
         icon: "communication",
-        text: "1日1つ以上誉め言葉をかけてほしい",
+        text: "1日1つ以上誉め言葉をかけてほしいな",
       },
       {
         icon: "action",
-        text: "疲れている時にマッサージしてもらえると助かるな",
+        text: "疲れている時にマッサージしてほしいな",
       },
       {
         icon: "communication",
-        text: "1日1回以上は感謝の気持ちを伝えてほしいな",
+        text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しいな",
       },
-      // {
-      //   icon: "shopping",
-      //   text: "買い物を手伝ってもらいたいわ",
-      // },
     ];
     sessionStorage.setItem("self-list", JSON.stringify(storedItems));
   }
@@ -36,20 +32,20 @@ function loadDefaultList() {
     const storedItems = [
       {
         icon: "cook",
-        text: "好きなご飯を作ってもらいたい",
+        text: "好きなご飯を作ってもらいたいな",
       },
       {
         icon: "communication",
-        text: "1日1つ以上誉め言葉をかけてほしい",
+        text: "1日1つ以上誉め言葉をかけてほしいな",
       },
-      { icon: "action", text: "疲れている時にマッサージしてほしい" },
+      { icon: "action", text: "疲れている時にマッサージしてほしいな" },
       {
         icon: "communication",
-        text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しい",
+        text: "1日1回以上は感謝の気持ちを伝えてもらえると嬉しいな",
       },
       {
         icon: "shopping",
-        text: "買い物を手伝ってもらいたい",
+        text: "買い物を手伝ってもらえると助かるな",
       },
     ];
     sessionStorage.setItem("partner-list", JSON.stringify(storedItems));
