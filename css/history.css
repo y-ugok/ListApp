@@ -8,11 +8,6 @@ h1 {
   margin-bottom: 0.7em;
   text-align: center;
 }
-/* a {
-  text-decoration: none;
-  padding-bottom: 0.5em;
-  color: #373737;
-} */
 .addStyle {
   padding-bottom: 0.4rem;
   font-weight: bold;
@@ -86,8 +81,8 @@ a {
 }
 li {
   background-color: white;
-  margin-bottom: 0.5rem;
-  padding: 0.2rem;
+  margin-bottom: 0.6rem;
+  padding: 0.35rem;
 }
 
 .list-flex {
