@@ -58,23 +58,23 @@ function loadDefaultList() {
       {
         type: "登録",
         action: "アプリの利用開始",
-        date: "2024/9/10 14:35",
+        date: "2024/10/29 14:35",
       },
       {
         type: "登録",
         action: "パートナーにグループURLを共有",
-        date: "2024/9/11 10:20",
+        date: "2024/10/30 10:20",
       },
     ];
 
     const selfItems = JSON.parse(sessionStorage.getItem("self-list")).reverse();
 
-    let d = 15;
+    let d = 1;
     for (let item of selfItems) {
       storedItems.push({
         type: "登録",
-        action: `自分がパートナーにしてほしいことリストに「${item.text}」を登録`,
-        date: `2024/9/${d} 0:00`,
+        action: `私のしてほしいことリストに「${item.text}」を登録`,
+        date: `2024/11/${d} 0:00`,
       });
       d += 1;
     }

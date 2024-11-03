@@ -217,7 +217,7 @@ updateButton.addEventListener("click", () => {
   const oldText = editTargetItem.querySelector(".text").textContent;
   const oldIcon = editTargetItem.classList.value;
   if (oldText === listText.value && oldIcon === newItem.icon) {
-    alert("アイテムの内容とアイコンが同じです");
+    alert("アイコンの種類とリストアイテム内容が同じです");
     return; // 関数を終了する
   }
 
@@ -238,7 +238,7 @@ registerButton.addEventListener("click", () => {
 
   // リストの数が5個以上の場合、エラーメッセージを表示して処理を終了
   if (storedItems.length >= MAX_LIST_ITEMS) {
-    alert("私がパートナーにしてほしいことリストは5つまでに制限されています");
+    alert("登録できるリストアイテム数は5つまでとなっています");
     return; // 処理を終了する
   }
 
