@@ -297,13 +297,13 @@ function updatePlantImage() {
   const plantImage = document.getElementById("plantImage");
   // list.jsの時にsrcエラーの回避
   if (!plantImage) return;
-  if (completedTasks >= 0 && completedTasks <= 2) {
+  if (completedTasks >= 0 && completedTasks < 4) {
     plantImage.src = "./img/plant1.png";
-  } else if (completedTasks >= 3 && completedTasks <= 5) {
+  } else if (completedTasks >= 4 && completedTasks < 8) {
     plantImage.src = "./img/plant2.png";
-  } else if (completedTasks >= 6 && completedTasks <= 8) {
+  } else if (completedTasks >= 8 && completedTasks < 12) {
     plantImage.src = "./img/plant3.png";
-  } else if (completedTasks >= 9 && completedTasks <= 11) {
+  } else if (completedTasks >= 12 && completedTasks < 16) {
     plantImage.src = "./img/plant4.png";
   } else {
     plantImage.src = "./img/plant5.png";
