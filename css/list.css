@@ -234,13 +234,3 @@ li.shopping img:first-child {
 #close > img {
   width: 2rem;
 }
-
-@media only screen and (min-width: 600px) {
-  .text {
-    font-size: 0.2em;
-  }
-  li {
-    height: 1em;
-    font-size: 3.5em;
-  }
-}
