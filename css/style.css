@@ -243,8 +243,8 @@ label {
   }
   .sp-main-wrapper {
     background-color: #fffbf1;
-    width: 335px;
-    height: 742px;
+    height: 80vh;
+    width: 350px;
     margin: 0 auto;
     position: relative;
   }
