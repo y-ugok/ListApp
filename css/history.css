@@ -89,3 +89,19 @@ li {
   width: 80%;
   margin: 0 auto;
 }
+@media only screen and (min-width: 600px) {
+  html,
+  body {
+    overflow: hidden;
+  }
+  li {
+    font-size: 0.5em;
+  }
+  .time {
+    font-size: 1.35em;
+  }
+  .wrapper {
+    height: 70vh;
+    overflow: auto;
+  }
+}
