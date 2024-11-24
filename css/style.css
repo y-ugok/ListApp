@@ -230,3 +230,39 @@ label {
 #new-item-content + .button-flex {
   width: 100%;
 }
+
+/* タブレット */
+@media screen and (min-width: 600px) {
+  /* タブレット用レイアウト 600px以上の範囲に収めるデザインはこの中に記述 */
+  body {
+    height: 100vh;
+    width: 100%;
+    background-color: #545454;
+    display: flex;
+    align-items: center;
+  }
+  .sp-main-wrapper {
+    background-color: #fffbf1;
+    width: 335px;
+    height: 742px;
+    margin: 0 auto;
+    position: relative;
+  }
+  main {
+    width: 80%;
+    margin: 0 auto;
+  }
+  footer {
+    position: initial;
+    position: absolute;
+    width: 99.5%;
+  }
+  .list li {
+    font-size: 0.7em;
+  }
+  /* フッターの高さを計算 */
+}
+/* PC*/
+@media screen and (min-width: 1025px) {
+  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+}

@@ -64,3 +64,5 @@ function applyThemeColor(color) {
     confirmReset.style.backgroundColor = color;
   }
 }
+
+// モーダルの表示位置の調整
