@@ -2,10 +2,11 @@
 body {
   margin: 0;
   background-color: #fffbf1;
+  text-size-adjust: none;
 }
 header {
   background-color: #ffc3b7;
-  padding: 1.2em;
+  padding: 1.2rem;
 }
 main {
   width: 88%;
@@ -31,6 +32,7 @@ button {
 button > img {
   width: 1.5rem;
 }
+
 footer {
   display: flex; /* 横並びにする */
   justify-content: space-around; /* 均等に間隔を空ける */
@@ -69,7 +71,7 @@ footer {
 }
 h1 {
   color: #545454;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin: 1rem 0;
 }
 #open {
@@ -232,7 +234,9 @@ label {
 }
 
 @media screen and (min-width: 481px) {
-  /* タブレット以上の場合に適用 */
+}
+@media screen and (min-width: 1025px) {
+  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   body {
     height: 100vh;
     width: 100%;
@@ -242,13 +246,13 @@ label {
   }
   .sp-main-wrapper {
     background-color: #fffbf1;
+    width: 280px;
     height: 85vh;
-    width: 55%;
     margin: 0 auto;
     position: relative;
   }
   h1 {
-    font-size: 0.1em;
+    font-size: 13px;
   }
   main {
     width: 88%;
@@ -260,13 +264,7 @@ label {
     width: 99.5%;
   }
 }
-@media (min-width: 600px) {
-  .sp-main-wrapper {
-    width: 45%;
-  }
-}
-@media (min-width: 1025px) {
-  .sp-main-wrapper {
-    width: 245px;
-  }
+/*フッターのデザイン変更 */
+.icon-wrapper > img {
+  width: 1.5rem;
 }

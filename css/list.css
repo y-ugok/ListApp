@@ -3,9 +3,7 @@
 ul {
   padding: 0;
 }
-/* .cook {
-  list-style-image: url("../img/cook.png");
-} */
+
 li {
   display: flex;
   justify-content: space-between;
@@ -55,7 +53,7 @@ button > img {
   margin-left: 1.4rem;
   margin-top: 0.6rem;
   width: 90%;
-  font-size: 13.5px;
+  font-size: 0.1em;
 }
 
 li span {
@@ -233,4 +231,20 @@ li.shopping img:first-child {
 #close > img {
   width: 2rem;
 }
-
+@media screen and (min-width: 520px) {
+  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+  li {
+    margin-top: 0.2rem;
+    height: 2.2em;
+  }
+  header {
+    padding: 0.7em;
+  }
+}
+@media screen and (min-width: 960px) {
+  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+  li {
+    margin-top: 0.2rem;
+    height: 2.2em;
+  }
+}
