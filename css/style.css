@@ -231,22 +231,24 @@ label {
   width: 100%;
 }
 
-/* タブレット */
-@media screen and (min-width: 600px) {
-  /* タブレット用レイアウト 600px以上の範囲に収めるデザインはこの中に記述 */
+@media screen and (min-width: 481px) {
+  /* タブレット以上の場合に適用 */
   body {
     height: 100vh;
     width: 100%;
-    background-color: #545454;
+    background-color: #003053;
     display: flex;
     align-items: center;
   }
   .sp-main-wrapper {
     background-color: #fffbf1;
-    height: 80vh;
-    width: 247px;
+    height: 85vh;
+    width: 55%;
     margin: 0 auto;
     position: relative;
+  }
+  h1 {
+    font-size: 0.1em;
   }
   main {
     width: 88%;
@@ -257,12 +259,14 @@ label {
     position: absolute;
     width: 99.5%;
   }
-  .list li {
-    font-size: 0.7em;
-  }
-  /* フッターの高さを計算 */
 }
-/* PC*/
-@media screen and (min-width: 1025px) {
-  /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+@media (min-width: 600px) {
+  .sp-main-wrapper {
+    width: 45%;
+  }
+}
+@media (min-width: 1025px) {
+  .sp-main-wrapper {
+    width: 245px;
+  }
 }

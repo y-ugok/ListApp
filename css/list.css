@@ -10,12 +10,11 @@ li {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  height: 1.6em;
+  height: 4em;
   position: relative;
   margin-top: 0.7rem;
   background-color: white;
   align-items: flex-start;
-  font-size: 2.8em;
 }
 
 li > button {
@@ -56,7 +55,7 @@ button > img {
   margin-left: 1.4rem;
   margin-top: 0.6rem;
   width: 90%;
-  font-size: 0.33em;
+  font-size: 13.5px;
 }
 
 li span {
@@ -234,3 +233,4 @@ li.shopping img:first-child {
 #close > img {
   width: 2rem;
 }
+
