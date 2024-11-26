@@ -128,3 +128,4 @@ document.querySelectorAll(".wrapper button").forEach((button) => {
     console.log(selectedColor);
   });
 });
+

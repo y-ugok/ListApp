@@ -69,6 +69,7 @@ function applyThemeColor(color) {
 if (window.matchMedia("(min-width: 481px)").matches) {
   // モーダルの表示位置を変更
   document.addEventListener("DOMContentLoaded", () => {
+    // ------ リストアイテム追加モーダル ------ //
     const openButton = document.getElementById("open"); // モーダルを開くボタン
     const registerDialog = document.getElementById("register-dialog"); // モーダル
     const footer = document.querySelector("footer");
