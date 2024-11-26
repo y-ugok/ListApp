@@ -20,7 +20,6 @@ li > button {
   height: 100%;
   border-style: none;
   background-color: #ffc7be;
-  padding: 0;
 }
 
 main img {
@@ -37,9 +36,9 @@ button {
   appearance: none;
 }
 
-button > img {
+/* button > img {
   width: 1.5rem;
-}
+} */
 
 .list-flex {
   width: 100%;
@@ -50,10 +49,10 @@ button > img {
 }
 
 .text {
-  margin-left: 1.4rem;
+  margin-left: 2rem;
   margin-top: 0.6rem;
   width: 90%;
-  font-size: 0.1em;
+  font-size: 0.3em;
 }
 
 li span {
@@ -186,7 +185,7 @@ edit-delete-container > button {
 }
 
 .rectangle {
-  width: 2.2rem;
+  width: 2rem;
   display: flex;
   align-items: center;
   height: 3rem;
@@ -206,7 +205,7 @@ edit-delete-container > button {
 }
 
 .wrapper {
-  width: 1rem;
+  width: 0.5rem;
   height: 100%;
   background-color: #ffc7be;
   margin: 0;
@@ -240,11 +239,29 @@ li.shopping img:first-child {
   header {
     padding: 0.7em;
   }
+  .rectangle > img {
+    width: 17px;
+  }
+  li.action img:first-child,
+  li.shopping img:first-child {
+    width: 15px;
+  }
+  .complete-btn > img {
+    width: 1rem;
+  }
+  .text {
+    font-size: 0.45rem;
+    margin-bottom: 2rem;
+  }
 }
 @media screen and (min-width: 960px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   li {
     margin-top: 0.2rem;
-    height: 2.2em;
+    height: 2em;
+  }
+
+  #register-dialog {
+    width: 50%;
   }
 }

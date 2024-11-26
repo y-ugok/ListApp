@@ -39,7 +39,7 @@ footer {
   align-items: center; /* 高さを中央揃えにする */
   background-color: #ffffff; /* フッターの背景色 */
   border: solid 0.1px lightgray;
-  padding: 12px 0; /* 上下にパディングを追加 */
+  padding: 0.5rem 0; /* 上下にパディングを追加 */
   position: fixed;
   bottom: 0;
   left: 0;
@@ -59,16 +59,20 @@ footer {
   align-items: center; /* これで縦方向に中央揃え */
   margin: 0;
 }
-.icon-wrapper a:nth-child(3) img {
+.icon-wrapper a img {
+  width: 1.9rem;
+}
+/* .icon-wrapper a:nth-child(3) img {
   width: 2.5rem;
-}
-.icon-wrapper a:nth-child(4) img {
+} */
+/* .icon-wrapper a:nth-child(4) img {
   width: 2rem;
-}
+}  */
+
 /* 他のアイコンを1.8remに */
-.icon-wrapper a:not(:nth-child(3), :nth-child(4)) img {
+/* .icon-wrapper a:not(:nth-child(3), :nth-child(4)) img {
   width: 2.2rem;
-}
+} */
 h1 {
   color: #545454;
   font-size: 0.9rem;
@@ -234,6 +238,32 @@ label {
 }
 
 @media screen and (min-width: 481px) {
+  body {
+    height: 100vh;
+    width: 100%;
+    background-color: #003053;
+    display: flex;
+    align-items: center;
+  }
+  .sp-main-wrapper {
+    background-color: #fffbf1;
+    width: 50%;
+    height: 85vh;
+    margin: 0 auto;
+    position: relative;
+  }
+  footer {
+    position: initial;
+    position: absolute;
+    width: 99.5%;
+    height: 1em;
+  }
+  h1 {
+    font-size: 0.55rem;
+  }
+  .icon-wrapper a > img {
+    width: 1.5rem;
+  }
 }
 @media screen and (min-width: 1025px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
@@ -249,10 +279,9 @@ label {
     width: 280px;
     height: 85vh;
     margin: 0 auto;
-    position: relative;
   }
   h1 {
-    font-size: 13px;
+    font-size: 0.6rem;
   }
   main {
     width: 88%;
@@ -262,9 +291,9 @@ label {
     position: initial;
     position: absolute;
     width: 99.5%;
+    height: 1em;
   }
-}
-/*フッターのデザイン変更 */
-.icon-wrapper > img {
-  width: 1.5rem;
+  .icon-wrapper > img {
+    width: 0.3rem;
+  }
 }

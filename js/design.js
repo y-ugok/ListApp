@@ -64,3 +64,30 @@ function applyThemeColor(color) {
     confirmReset.style.backgroundColor = color;
   }
 }
+
+// モーダルの表示位置を変更
+document.addEventListener("DOMContentLoaded", () => {
+  const openButton = document.getElementById("open"); // モーダルを開くボタン
+  const registerDialog = document.getElementById("register-dialog"); // モーダル
+  const footer = document.querySelector("footer");
+
+  // フッターの終わりの位置を取得
+  function updateDialogPosition() {
+    const footerHeight = footer.offsetHeight;
+    registerDialog.style.bottom = `${footerHeight}px`; // フッターの高さ分だけ下に配置
+  }
+
+  // モーダルを開く
+  openButton.addEventListener("click", () => {
+    updateDialogPosition();
+    registerDialog.showModal(); // モーダルを開く
+  });
+
+  // モーダルを閉じる
+  document.getElementById("register-close").addEventListener("click", () => {
+    registerDialog.close(); // モーダルを閉じる
+  });
+
+  // ウィンドウサイズ変更時に再計算
+  window.addEventListener("resize", updateDialogPosition);
+});

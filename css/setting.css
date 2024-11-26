@@ -22,7 +22,7 @@ a {
 .list li {
   list-style-type: none;
   padding: 1em;
-  font-size: 3.5vw;
+  font-size: 1rem;
   /* margin-top: 0.5rem; */
   background-color: white;
   border: 1px solid #ffefcc;
@@ -264,4 +264,11 @@ dialog {
 .selected-button {
   background-color: black;
   color: white;
+}
+/* デザインB（タブレット） */
+@media screen and (min-width: 600px) {
+  /* タブレット用レイアウト 600px以上の範囲に収めるデザインはこの中に記述 */
+  .list li {
+    font-size: 0.3em;
+  }
 }
