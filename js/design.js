@@ -65,29 +65,37 @@ function applyThemeColor(color) {
   }
 }
 
-// モーダルの表示位置を変更
-document.addEventListener("DOMContentLoaded", () => {
-  const openButton = document.getElementById("open"); // モーダルを開くボタン
-  const registerDialog = document.getElementById("register-dialog"); // モーダル
-  const footer = document.querySelector("footer");
+// レスポンシブ化
+if (window.matchMedia("(min-width: 481px)").matches) {
+  // モーダルの表示位置を変更
+  document.addEventListener("DOMContentLoaded", () => {
+    const openButton = document.getElementById("open"); // モーダルを開くボタン
+    const registerDialog = document.getElementById("register-dialog"); // モーダル
+    const footer = document.querySelector("footer");
 
-  // フッターの終わりの位置を取得
-  function updateDialogPosition() {
-    const footerHeight = footer.offsetHeight;
-    registerDialog.style.bottom = `${footerHeight}px`; // フッターの高さ分だけ下に配置
-  }
+    // フッターの終わりの位置を取得
+    function updateDialogPosition() {
+      const footerHeight = footer.offsetHeight;
+      registerDialog.style.bottom = `${footerHeight}px`; // フッターの高さ分だけ下に配置
+      registerDialog.style.height = `80vh`;
+      registerDialog.style.width = `50%`;
+    }
 
-  // モーダルを開く
-  openButton.addEventListener("click", () => {
-    updateDialogPosition();
-    registerDialog.showModal(); // モーダルを開く
+    // // モーダルを開く
+    openButton.addEventListener("click", () => {
+      updateDialogPosition();
+      registerDialog.showModal(); // モーダルを開く
+    });
+
+    // モーダルを閉じる
+    document.getElementById("register-close").addEventListener("click", () => {
+      registerDialog.close(); // モーダルを閉じる
+    });
+
+    // ウィンドウサイズ変更時に再計算
+    window.addEventListener("resize", updateDialogPosition);
   });
-
-  // モーダルを閉じる
-  document.getElementById("register-close").addEventListener("click", () => {
-    registerDialog.close(); // モーダルを閉じる
-  });
-
-  // ウィンドウサイズ変更時に再計算
-  window.addEventListener("resize", updateDialogPosition);
-});
+} else if (window.matchMedia("(min-width:960px)").matches) {
+  //PC処理
+  registerDialog.style.width = `280px`;
+}

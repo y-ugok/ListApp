@@ -264,6 +264,9 @@ label {
   .icon-wrapper a > img {
     width: 1.5rem;
   }
+  button > img {
+    width: 0.8rem;
+  }
 }
 @media screen and (min-width: 1025px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
