@@ -76,7 +76,7 @@ if (window.matchMedia("(min-width: 481px)").matches) {
 
     // フッターの終わりの位置を取得
     function updateDialogPosition() {
-      const footerHeight = footer.offsetHeight;
+      const footerHeight = footer.clientHeight;
       registerDialog.style.bottom = `${footerHeight}px`; // フッターの高さ分だけ下に配置
       registerDialog.style.height = `80vh`;
       registerDialog.style.width = `50%`;
