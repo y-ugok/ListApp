@@ -83,10 +83,12 @@ if (window.matchMedia("(min-width: 481px)").matches) {
     }
 
     // // モーダルを開く
-    openButton.addEventListener("click", () => {
-      updateDialogPosition();
-      registerDialog.showModal(); // モーダルを開く
-    });
+    if (openButton) {
+      openButton.addEventListener("click", () => {
+        updateDialogPosition();
+        registerDialog.showModal(); // モーダルを開く
+      });
+    }
 
     // モーダルを閉じる
     document.getElementById("register-close").addEventListener("click", () => {
