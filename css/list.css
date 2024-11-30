@@ -16,7 +16,7 @@ li {
 }
 
 li > button {
-  width: 2.1rem;
+  /* width: 1.4rem; */
   height: 100%;
   border-style: none;
   background-color: #ffc7be;
@@ -25,6 +25,7 @@ li > button {
 main img {
   display: block;
   margin: 0 auto;
+  width: 1.2rem;
 }
 
 button {
@@ -49,8 +50,8 @@ button {
 }
 
 .text {
-  margin-left: 2rem;
-  margin-top: 0.6rem;
+  margin-left: 1.2rem;
+  margin-top: 0.4rem;
   width: 90%;
   font-size: 0.8rem;
 }
@@ -62,7 +63,7 @@ li span {
 
 li span img {
   margin-right: 0.3rem; /* 文字と「・・・」の画像の間にスペースを作る */
-  width: 1rem;
+  width: 0.65rem;
 }
 
 li > button {
@@ -70,7 +71,7 @@ li > button {
   border-style: none;
   background-color: #ffc7be;
   padding: 0;
-  padding: 0 0.3rem;
+  width: 1.45rem;
 }
 /* 編集ダイアログを開く時 */
 #edit-dialog {
@@ -242,16 +243,14 @@ li.shopping img:first-child {
   .rectangle > img {
     width: 17px;
   }
+
+  .complete-btn > img,
   li.action img:first-child,
   li.shopping img:first-child {
-    width: 15px;
-  }
-  .complete-btn > img {
-    width: 1rem;
+    width: 0.95rem;
   }
   .text {
     font-size: 0.45rem;
-    margin-bottom: 2rem;
   }
   .rectangle {
     width: 1.3rem;
@@ -260,11 +259,11 @@ li.shopping img:first-child {
 @media screen and (min-width: 960px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   li {
-    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
     height: 2em;
   }
 
-  #register-dialog {
+  /* #register-dialog {
     width: 50%;
-  }
+  } */
 }

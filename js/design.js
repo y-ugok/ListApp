@@ -77,14 +77,6 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
   const colorButton = document.getElementById("colorButton");
 
   // フッターの終わりの位置を取得
-  function updateDialogPosition() {
-    const footerRect = footer.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    const footerOffset = viewportHeight - footerRect.bottom;
-    registerDialog.style.bottom = `${footerOffset}px`;
-    registerDialog.style.width = `250px`;
-    registerDialog.style.height = `75vh`;
-  }
   function updateDialogPosition(dialog) {
     const footerRect = footer.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
@@ -101,7 +93,9 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
     });
   }
   if (colorButton) {
-    colorButton.addEventListener("click", updateDialogPosition(colorDialog));
+    colorButton.addEventListener("click", () =>
+      updateDialogPosition(colorDialog)
+    );
   }
   dotsImg.forEach((el) => {
     el.addEventListener("click", () => {
