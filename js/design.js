@@ -71,26 +71,26 @@ const editDialog = document.getElementById("edit-dialog");
 const dotsImg = document.querySelectorAll('img[src="./img/dots.png"]');
 const colorDialog = document.getElementById("colorModal");
 const footer = document.querySelector("footer");
-const colorButton = document.getElementById("colorButton");
+const color = document.getElementById("colorButton");
 
 // レスポンシブ化
 if (window.matchMedia("(max-width: 1024px)").matches) {
-  const footerRect = footer.getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
-  const footerOffset = viewportHeight - footerRect.bottom;
-  dialog.style.bottom = `${footerOffset}px`;
-  dialog.style.width = `100%`;
-  dialog.style.height = `100vh`;
-  dialog.showModal();
+  function updateDialogPosition(dialog) {
+    const footerRect = footer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const footerOffset = viewportHeight - footerRect.bottom;
+    dialog.style.bottom = `0px`;
+    dialog.style.width = `100%`;
+    dialog.style.height = `100vh`;
+    dialog.showModal();
+  }
   if (openButton) {
     openButton.addEventListener("click", () => {
       updateDialogPosition(registerDialog);
     });
   }
-  if (colorButton) {
-    colorButton.addEventListener("click", () =>
-      updateDialogPosition(colorDialog)
-    );
+  if (color) {
+    color.addEventListener("click", () => updateDialogPosition(colorDialog));
   }
   dotsImg.forEach((el) => {
     el.addEventListener("click", () => {
@@ -114,10 +114,8 @@ if (window.matchMedia("(min-width: 1025px)").matches) {
       updateDialogPosition(registerDialog);
     });
   }
-  if (colorButton) {
-    colorButton.addEventListener("click", () =>
-      updateDialogPosition(colorDialog)
-    );
+  if (color) {
+    color.addEventListener("click", () => updateDialogPosition(colorDialog));
   }
   dotsImg.forEach((el) => {
     el.addEventListener("click", () => {

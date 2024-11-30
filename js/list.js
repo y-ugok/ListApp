@@ -1,10 +1,10 @@
 "use strict";
-const openButton =
+const open =
   document.getElementById("open") || document.getElementById("open-disabled");
-const registerDialog = document.querySelector("#register-dialog");
+const register = document.querySelector("#register-dialog");
 const registerButton = document.getElementById("register-item-btn");
 const registerCloseButton = document.getElementById("register-close");
-const editDialog = document.querySelector("#edit-dialog");
+const edit = document.querySelector("#edit-dialog");
 const updateButton = document.getElementById("update-item-btn");
 const deleteButton = document.getElementById("del-item-btn");
 const editCloseButton = document.getElementById("edit-close");
@@ -25,49 +25,49 @@ function getListKey() {
 loadDefaultList();
 
 // ダイアログを開く・閉じる
-openButton.addEventListener("click", () => {
+open.addEventListener("click", () => {
   // モーダル表示前にクラスを付与
-  registerDialog.classList.add("show-from");
+  register.classList.add("show-from");
   newListText.value = "";
-  registerDialog.showModal();
+  register.showModal();
   requestAnimationFrame(() => {
     // モーダル表示後にクラスを削除してアニメーションを開始
-    registerDialog.classList.remove("show-from");
+    register.classList.remove("show-from");
   });
 });
 
 function show() {
-  registerDialog.classList.add("show-from");
-  registerDialog.showModal();
+  register.classList.add("show-from");
+  register.showModal();
 
   requestAnimationFrame(() => {
     // モーダル表示後にクラスを削除してアニメーションを開始
-    registerDialog.classList.remove("show-from");
+    register.classList.remove("show-from");
   });
 }
 registerCloseButton.addEventListener("click", () => {
   // モーダル非表示前にクラスを付与してアニメーションを開始
-  registerDialog.classList.add("hide-to");
+  register.classList.add("hide-to");
 
-  registerDialog.addEventListener(
+  register.addEventListener(
     "transitionend",
     () => {
       // アニメーション終了後にクラスを削除し、モーダルを閉じる
-      registerDialog.classList.remove("hide-to");
-      registerDialog.close();
+      register.classList.remove("hide-to");
+      register.close();
     }, //transitioneイベントが発生した時に実行される
     {
       once: true,
     } // イベントリスナーが一度だけ呼び出される
   );
 });
-registerDialog.addEventListener("click", (event) => {
-  if (event.target === registerDialog) {
-    registerDialog.close();
+register.addEventListener("click", (event) => {
+  if (event.target === register) {
+    register.close();
   }
 });
 editCloseButton.addEventListener("click", () => {
-  editDialog.close();
+  edit.close();
 });
 
 // セッションストレージにアイテムを保存
@@ -173,24 +173,24 @@ function addDotsFunctionality() {
         itemElement.remove();
       });
       // == モーダルを表示する==//
-      editDialog.classList.add("show-from");
-      editDialog.showModal();
+      edit.classList.add("show-from");
+      edit.showModal();
 
       requestAnimationFrame(() => {
         // モーダル表示後にクラスを削除してアニメーションを開始
-        editDialog.classList.remove("show-from");
+        edit.classList.remove("show-from");
       });
     });
   });
 }
 /* 背景をクリックした時に編集ダイアログを閉じる */
-editDialog.addEventListener("click", (event) => {
+edit.addEventListener("click", (event) => {
   // 背景がクリックされた場合は閉じる。
   // ダイアログの見た目のスタイルは .inner に設定しているので、
   // コンテンツ部分がクリックされた場合、target は必ず .inner かその子孫要素になる。
   // したがって、target === dialog の時は背景がクリックされたとみなせる。
-  if (event.target === editDialog) {
-    editDialog.close();
+  if (event.target === edit) {
+    edit.close();
   }
 });
 // 削除ボタンのクリックイベント
@@ -198,7 +198,7 @@ deleteButton.addEventListener("click", () => {
   removeFromSessionStorage(listText.value); // セッションストレージから削除
   removeHistory(listText.value); // 履歴を更新（in history.js）
   // listText.remove(); // DOMから削除
-  editDialog.close();
+  edit.close();
 });
 
 // アイテム更新ボタンの処理
@@ -225,7 +225,7 @@ updateButton.addEventListener("click", () => {
   editTargetItem.querySelector(".text").textContent = newItem.text; // リストのテキストを更新
   editTargetItem.className = newItem.icon; // アイコンのクラスを更新
 
-  editDialog.close(); // ダイアログを閉じる
+  edit.close(); // ダイアログを閉じる
   editTargetItem = null; // 編集対象のアイテムをリセット
   loadList();
 });
@@ -255,7 +255,7 @@ registerButton.addEventListener("click", () => {
   // 新規追加処理
   saveToSessionStorage(newItem);
 
-  registerDialog.close(); // ダイアログを閉じる
+  register.close(); // ダイアログを閉じる
   loadList();
 });
 
