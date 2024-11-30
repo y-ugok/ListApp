@@ -65,18 +65,40 @@ function applyThemeColor(color) {
   }
 }
 
-// レスポンシブ化
-if (window.matchMedia("(min-width: 1024px)").matches) {
-  // モーダルの表示位置を変更
-  const openButton = document.getElementById("open");
-  const registerDialog = document.getElementById("register-dialog");
-  const editDialog = document.getElementById("edit-dialog");
-  const dotsImg = document.querySelectorAll('img[src="./img/dots.png"]');
-  const colorDialog = document.getElementById("colorModal");
-  const footer = document.querySelector("footer");
-  const colorButton = document.getElementById("colorButton");
+const openButton = document.getElementById("open");
+const registerDialog = document.getElementById("register-dialog");
+const editDialog = document.getElementById("edit-dialog");
+const dotsImg = document.querySelectorAll('img[src="./img/dots.png"]');
+const colorDialog = document.getElementById("colorModal");
+const footer = document.querySelector("footer");
+const colorButton = document.getElementById("colorButton");
 
-  // フッターの終わりの位置を取得
+// レスポンシブ化
+if (window.matchMedia("(max-width: 1024px)").matches) {
+  const footerRect = footer.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const footerOffset = viewportHeight - footerRect.bottom;
+  dialog.style.bottom = `${footerOffset}px`;
+  dialog.style.width = `100%`;
+  dialog.style.height = `100vh`;
+  dialog.showModal();
+  if (openButton) {
+    openButton.addEventListener("click", () => {
+      updateDialogPosition(registerDialog);
+    });
+  }
+  if (colorButton) {
+    colorButton.addEventListener("click", () =>
+      updateDialogPosition(colorDialog)
+    );
+  }
+  dotsImg.forEach((el) => {
+    el.addEventListener("click", () => {
+      updateDialogPosition(editDialog);
+    });
+  });
+}
+if (window.matchMedia("(min-width: 1025px)").matches) {
   function updateDialogPosition(dialog) {
     const footerRect = footer.getBoundingClientRect();
     const viewportHeight = window.innerHeight;

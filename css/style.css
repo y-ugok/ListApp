@@ -115,11 +115,11 @@ dialog {
   padding: 0;
 }
 /* 背景のスタイルは ::backdrop 疑似要素で指定 */
-dialog::backdrop {
+/* dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
   /* backdrop-filter: blur(2px); */
-  /* 要素の背後の領域に、ぼかしや色変化のようなグラフィック効果を適用 */
-}
+/* 要素の背後の領域に、ぼかしや色変化のようなグラフィック効果を適用 */
+/* }  */
 dialog > p {
   text-align: center;
   margin-bottom: 0;
