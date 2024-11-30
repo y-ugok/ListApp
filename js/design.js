@@ -66,39 +66,51 @@ function applyThemeColor(color) {
 }
 
 // レスポンシブ化
-if (window.matchMedia("(min-width: 481px)").matches) {
+if (window.matchMedia("(min-width: 1024px)").matches) {
   // モーダルの表示位置を変更
-  document.addEventListener("DOMContentLoaded", () => {
-    // ------ リストアイテム追加モーダル ------ //
-    const openButton = document.getElementById("open"); // モーダルを開くボタン
-    const registerDialog = document.getElementById("register-dialog"); // モーダル
-    const footer = document.querySelector("footer");
+  const openButton = document.getElementById("open");
+  const registerDialog = document.getElementById("register-dialog");
+  const editDialog = document.getElementById("edit-dialog");
+  const dotsImg = document.querySelectorAll('img[src="./img/dots.png"]');
+  const colorDialog = document.getElementById("colorModal");
+  const footer = document.querySelector("footer");
+  const colorButton = document.getElementById("colorButton");
 
-    // フッターの終わりの位置を取得
-    function updateDialogPosition() {
-      const footerHeight = footer.clientHeight;
-      registerDialog.style.bottom = `${footerHeight}px`; // フッターの高さ分だけ下に配置
-      registerDialog.style.height = `80vh`;
-      registerDialog.style.width = `50%`;
-    }
-
-    // // モーダルを開く
-    if (openButton) {
-      openButton.addEventListener("click", () => {
-        updateDialogPosition();
-        registerDialog.showModal(); // モーダルを開く
-      });
-    }
-
-    // モーダルを閉じる
-    document.getElementById("register-close").addEventListener("click", () => {
-      registerDialog.close(); // モーダルを閉じる
+  // フッターの終わりの位置を取得
+  function updateDialogPosition() {
+    const footerRect = footer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const footerOffset = viewportHeight - footerRect.bottom;
+    registerDialog.style.bottom = `${footerOffset}px`;
+    registerDialog.style.width = `250px`;
+    registerDialog.style.height = `75vh`;
+  }
+  function updateDialogPosition(dialog) {
+    const footerRect = footer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const footerOffset = viewportHeight - footerRect.bottom;
+    dialog.style.bottom = `${footerOffset}px`;
+    dialog.style.width = `250px`;
+    dialog.style.height = `75vh`;
+    dialog.showModal();
+  }
+  // モーダルを開く
+  if (openButton) {
+    openButton.addEventListener("click", () => {
+      updateDialogPosition(registerDialog);
     });
-
-    // ウィンドウサイズ変更時に再計算
-    window.addEventListener("resize", updateDialogPosition);
+  }
+  if (colorButton) {
+    colorButton.addEventListener("click", updateDialogPosition(colorDialog));
+  }
+  dotsImg.forEach((el) => {
+    el.addEventListener("click", () => {
+      updateDialogPosition(editDialog);
+    });
   });
-} else if (window.matchMedia("(min-width:960px)").matches) {
-  //PC処理
-  registerDialog.style.width = `280px`;
+  // ウィンドウサイズ変更時に再計算
+  window.addEventListener("resize", () => {
+    updateDialogPosition(registerDialog);
+    updateDialogPosition(editDialog);
+  });
 }
