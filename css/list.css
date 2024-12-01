@@ -30,8 +30,8 @@ label {
   font-size: 0.9rem;
 }
 /* actionアイコンのスタイル */
-li.shopping img:first-child {
-  width: 1.6rem; /* action.pngの幅を0.5remに設定 */
+img[src="./img/check-icon.png"] {
+  width: 1.58rem;
 }
 button {
   background-color: transparent;
