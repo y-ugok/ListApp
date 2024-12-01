@@ -84,7 +84,7 @@ dialog::backdrop {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
 }
 
 .cancel-btn {
@@ -270,5 +270,8 @@ dialog {
   /* タブレット用レイアウト 600px以上の範囲に収めるデザインはこの中に記述 */
   .list li {
     font-size: 0.3em;
+  }
+  #reset-dialog {
+    width: 18%;
   }
 }

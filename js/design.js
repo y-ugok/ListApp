@@ -68,20 +68,17 @@ function applyThemeColor(color) {
 const openButton = document.getElementById("open");
 const registerDialog = document.getElementById("register-dialog");
 const editDialog = document.getElementById("edit-dialog");
-const dotsImg = document.querySelectorAll('img[src="./img/dots.png"]');
+const dotsImg = document.querySelectorAll(".text+img");
 const colorDialog = document.getElementById("colorModal");
 const footer = document.querySelector("footer");
 const color = document.getElementById("colorButton");
 
-// レスポンシブ化
+// モーダル表示のレスポンシブ化
 if (window.matchMedia("(max-width: 1024px)").matches) {
   function updateDialogPosition(dialog) {
-    const footerRect = footer.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    const footerOffset = viewportHeight - footerRect.bottom;
     dialog.style.bottom = `0px`;
-    dialog.style.width = `100%`;
-    dialog.style.height = `100vh`;
+    dialog.style.width = `50%`;
+    dialog.style.height = `80vh`;
     dialog.showModal();
   }
   if (openButton) {
@@ -108,7 +105,6 @@ if (window.matchMedia("(min-width: 1025px)").matches) {
     dialog.style.height = `75vh`;
     dialog.showModal();
   }
-  // モーダルを開く
   if (openButton) {
     openButton.addEventListener("click", () => {
       updateDialogPosition(registerDialog);
@@ -122,9 +118,9 @@ if (window.matchMedia("(min-width: 1025px)").matches) {
       updateDialogPosition(editDialog);
     });
   });
-  // ウィンドウサイズ変更時に再計算
-  window.addEventListener("resize", () => {
-    updateDialogPosition(registerDialog);
-    updateDialogPosition(editDialog);
-  });
 }
+// // ウィンドウサイズ変更時に再計算
+// window.addEventListener("resize", () => {
+//   updateDialogPosition(registerDialog);
+//   updateDialogPosition(editDialog);
+// });

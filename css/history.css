@@ -37,7 +37,7 @@ li {
 }
 .list li {
   padding: 0.3rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   background-color: white;
   border: 1px solid #ffd88a;
 }
@@ -101,7 +101,7 @@ li {
     font-size: 0.5rem;
   }
   .wrapper {
-    height: 70vh;
+    height: 61vh;
     overflow: auto;
   }
 }

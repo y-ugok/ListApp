@@ -10,13 +10,12 @@ li {
   list-style-type: none;
   height: 4em;
   position: relative;
-  margin-top: 0.7rem;
+  margin-top: 0.3rem;
   background-color: white;
   align-items: flex-start;
 }
 
 li > button {
-  /* width: 1.4rem; */
   height: 100%;
   border-style: none;
   background-color: #ffc7be;
@@ -25,9 +24,15 @@ li > button {
 main img {
   display: block;
   margin: 0 auto;
-  width: 1.2rem;
+  width: 2.2rem;
 }
-
+label {
+  font-size: 0.9rem;
+}
+/* actionアイコンのスタイル */
+li.shopping img:first-child {
+  width: 1.6rem; /* action.pngの幅を0.5remに設定 */
+}
 button {
   background-color: transparent;
   border: none;
@@ -36,11 +41,6 @@ button {
   padding: 0;
   appearance: none;
 }
-
-/* button > img {
-  width: 1.5rem;
-} */
-
 .list-flex {
   width: 100%;
   /* background-color: #545454; */
@@ -50,10 +50,10 @@ button {
 }
 
 .text {
-  margin-left: 1.2rem;
-  margin-top: 0.4rem;
-  width: 90%;
-  font-size: 0.8rem;
+  margin-left: 2.1rem;
+  margin-top: 0.55rem;
+  width: 80%;
+  font-size: 0.85rem;
 }
 
 li span {
@@ -63,7 +63,7 @@ li span {
 
 li span img {
   margin-right: 0.3rem; /* 文字と「・・・」の画像の間にスペースを作る */
-  width: 0.65rem;
+  width: 1.2rem;
 }
 
 li > button {
@@ -71,30 +71,7 @@ li > button {
   border-style: none;
   background-color: #ffc7be;
   padding: 0;
-  width: 1.45rem;
-}
-/* 編集ダイアログを開く時 */
-#edit-dialog {
-  /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
-  top: auto;
-
-  /* デフォルトで最大幅が設定されていて width: 100% にならないので解除 */
-  max-width: none;
-
-  /* デフォルトで fit-content になっていて中身の幅になってしまうので解除 */
-  width: auto;
-
-  /*
-   * デフォルトが auto なので visible にして box-shadow が表示されるようにする
-   * スクロールさせたい場合は子孫要素で overflow: auto などを指定する
-   */
-  overflow: visible;
-
-  background-color: #fff;
-  border: none;
-  border-radius: 16px 16px 0 0;
-  box-sizing: border-box;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  width: 2.5rem;
 }
 
 /* 背景のスタイルは ::backdrop 疑似要素で指定 */
@@ -114,8 +91,9 @@ li > button {
   transition: 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
-/* 新規追加ダイアログを開く時 */
-#register-dialog {
+/* 新規追加と編集ダイアログを開く時 */
+#register-dialog,
+#edit-dialog {
   /* デフォルトが inset: 0; なので top: auto; にして下側に配置する */
   top: auto;
 
@@ -124,7 +102,6 @@ li > button {
 
   /* デフォルトで fit-content になっていて中身の幅になってしまうので解除 */
   width: auto;
-
   /*
      * デフォルトが auto なので visible にして box-shadow が表示されるようにする
      * スクロールさせたい場合は子孫要素で overflow: auto などを指定する
@@ -186,7 +163,7 @@ edit-delete-container > button {
 }
 
 .rectangle {
-  width: 2rem;
+  width: 2.2rem;
   display: flex;
   align-items: center;
   height: 3rem;
@@ -197,7 +174,7 @@ edit-delete-container > button {
 }
 
 .rectangle > img {
-  width: 1.7rem;
+  width: 1.6rem;
   height: auto;
   position: absolute;
   top: 50%;
@@ -220,17 +197,10 @@ edit-delete-container > button {
   top: 0; /* 上部に配置 */
   left: 0; /* 左に配置 */
 }
-/* actionアイコンのスタイル */
-li.action img:first-child {
-  width: 1.4rem; /* action.pngの幅を0.5remに設定 */
-}
-/* actionアイコンのスタイル */
-li.shopping img:first-child {
-  width: 1.4rem; /* action.pngの幅を0.5remに設定 */
-}
 #close > img {
   width: 2rem;
 }
+
 @media screen and (min-width: 520px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   li {
@@ -238,32 +208,41 @@ li.shopping img:first-child {
     height: 2.2em;
   }
   header {
-    padding: 0.7em;
-  }
-  .rectangle > img {
-    width: 17px;
+    padding: 0.55rem;
   }
 
   .complete-btn > img,
   li.action img:first-child,
-  li.shopping img:first-child {
-    width: 0.95rem;
+  li.shopping img:first-child,
+  .rectangle > img {
+    width: 0.9rem;
   }
   .text {
-    font-size: 0.45rem;
+    font-size: 0.88rem;
   }
   .rectangle {
     width: 1.3rem;
+  }
+  #edit-dialog {
+    max-width: 24.5%;
+    height: 75%;
+  }
+  li > button {
+    width: 1.5rem;
   }
 }
 @media screen and (min-width: 960px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   li {
     margin-bottom: 0.2rem;
-    height: 2em;
+    height: 2.1em;
   }
-
-  /* #register-dialog {
-    width: 50%;
-  } */
+  .text {
+    margin-left: 1.1rem;
+    margin-top: 0.5rem;
+    font-size: 0.45rem;
+  }
+  li span img {
+    width: 0.8rem;
+  }
 }
