@@ -140,6 +140,7 @@ dialog > p {
   color: white;
   border: none;
   padding: 0.35rem 0.8rem;
+  font-size: 0.9rem;
 }
 
 .center {
@@ -164,7 +165,7 @@ dialog > p {
   border-radius: 4px;
   padding-left: 0.5rem;
   height: 1.8rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 #item-content,
@@ -272,7 +273,7 @@ label {
   }
   #update-item-btn,
   #del-item-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   .header-wrapper > p {
     font-size: 1rem;
