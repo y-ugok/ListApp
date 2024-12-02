@@ -216,12 +216,10 @@ dialog {
 }
 .wrapper > button {
   border-radius: 0.5rem;
-  width: 3.7rem;
+  width: 4.2rem;
+  height: 2.5rem;
   border: solid 1.3px lightgray;
   margin: 0.6rem;
-}
-#colorClose {
-  margin-right: 5.3rem;
 }
 
 .wrapper {

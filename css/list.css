@@ -21,16 +21,12 @@ li > button {
   background-color: #ffc7be;
 }
 
-main img {
-  display: block;
-  margin: 0 auto;
-  width: 2.2rem;
-}
 label {
   font-size: 0.9rem;
 }
 /* actionアイコンのスタイル */
-img[src="./img/check-icon.png"] {
+img[src="./img/check-icon.png"],
+.rectangle > img {
   width: 1.58rem;
 }
 button {
@@ -174,7 +170,7 @@ edit-delete-container > button {
 }
 
 .rectangle > img {
-  width: 1.6rem;
+  width: 1.7rem;
   height: auto;
   position: absolute;
   top: 50%;

@@ -77,7 +77,7 @@ const color = document.getElementById("colorButton");
 if (window.matchMedia("(max-width: 1024px)").matches) {
   function updateDialogPosition(dialog) {
     dialog.style.bottom = `0px`;
-    dialog.style.width = `50%`;
+    dialog.style.width = `100%`;
     dialog.style.height = `80vh`;
     dialog.showModal();
   }
@@ -100,9 +100,9 @@ if (window.matchMedia("(min-width: 1025px)").matches) {
     const footerRect = footer.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
     const footerOffset = viewportHeight - footerRect.bottom;
-    dialog.style.bottom = `${footerOffset}px`;
     dialog.style.width = `250px`;
-    dialog.style.height = `75vh`;
+    dialog.style.height = `80vh`;
+    dialog.style.bottom = `${footerOffset}px`;
     dialog.showModal();
   }
   if (openButton) {
