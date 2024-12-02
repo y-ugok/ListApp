@@ -24,11 +24,7 @@ li > button {
 label {
   font-size: 0.9rem;
 }
-/* actionアイコンのスタイル */
-img[src="./img/check-icon.png"],
-.rectangle > img {
-  width: 1.58rem;
-}
+
 button {
   background-color: transparent;
   border: none;
@@ -170,14 +166,19 @@ edit-delete-container > button {
 }
 
 .rectangle > img {
-  width: 1.7rem;
+  width: 1.8rem;
   height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* 中心に移動 */
 }
+/* actionアイコンのスタイル */
 
+img[src="./img/action.png"],
+img[src="./img/shopping.png"] {
+  width: 1.4rem;
+}
 .wrapper {
   width: 0.5rem;
   height: 100%;
