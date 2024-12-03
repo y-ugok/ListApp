@@ -321,6 +321,7 @@ function adjustDialogPosition(dialog) {
     dialog.style.width = `250px`;
   } else {
     // 画面幅が狭い場合はデフォルト位置に戻す
+    dialog.style.width = `100%`;
     dialog.style.bottom = 0;
   }
 }

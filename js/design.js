@@ -65,6 +65,7 @@ function applyThemeColor(color) {
   }
 }
 
+// モーダル表示のレスポンシブ化
 const openButton = document.getElementById("open");
 const registerDialog = document.getElementById("register-dialog");
 const editDialog = document.getElementById("edit-dialog");
@@ -73,54 +74,50 @@ const colorDialog = document.getElementById("colorModal");
 const footer = document.querySelector("footer");
 const color = document.getElementById("colorButton");
 
-// モーダル表示のレスポンシブ化
-if (window.matchMedia("(max-width: 1024px)").matches) {
-  function updateDialogPosition(dialog) {
-    dialog.style.bottom = `0px`;
-    dialog.style.width = `100%`;
-    dialog.style.height = `80vh`;
-    dialog.showModal();
+function updateDialogPosition(dialog) {
+  const viewportHeight = window.innerHeight; // ビューポートの高さ
+  const footerRect = footer.getBoundingClientRect(); // フッターの位置
+  const footerOffset = viewportHeight - footerRect.bottom; // フッターまでの距離
+
+  // ウィンドウサイズに応じたモーダルの幅と位置を変更
+  if (window.matchMedia("(max-width: 1024px)").matches) {
+    // 1024px未満の場合、モーダル幅を100%にし、下端がページ下端に合わせる
+    dialog.style.width = "100%";
+    dialog.style.height = "80vh"; // 高さを80vhに設定
+    dialog.style.bottom = "0px"; // モーダルの下端をページ下端に合わせる
+  } else {
+    // 1024px以上の場合、モーダル幅を250pxに設定し、フッターと下端が揃うように調整
+    dialog.style.width = "250px";
+    dialog.style.height = "73vh"; // 高さを73vhに設定
+    dialog.style.bottom = `${footerOffset}px`; // フッターの下端に合わせる
   }
-  if (openButton) {
-    openButton.addEventListener("click", () => {
-      updateDialogPosition(registerDialog);
-    });
-  }
-  if (color) {
-    color.addEventListener("click", () => updateDialogPosition(colorDialog));
-  }
-  dotsImg.forEach((el) => {
-    el.addEventListener("click", () => {
-      updateDialogPosition(editDialog);
-    });
+  dialog.showModal(); // モーダルを表示
+}
+
+// モーダルの表示イベントリスナー
+if (openButton) {
+  openButton.addEventListener("click", () => {
+    updateDialogPosition(registerDialog);
   });
 }
-if (window.matchMedia("(min-width: 1025px)").matches) {
-  function updateDialogPosition(dialog) {
-    const footerRect = footer.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    const footerOffset = viewportHeight - footerRect.bottom;
-    dialog.style.width = `250px`;
-    dialog.style.height = `80vh`;
-    dialog.style.bottom = `${footerOffset}px`;
-    dialog.showModal();
-  }
-  if (openButton) {
-    openButton.addEventListener("click", () => {
-      updateDialogPosition(registerDialog);
-    });
-  }
-  if (color) {
-    color.addEventListener("click", () => updateDialogPosition(colorDialog));
-  }
-  dotsImg.forEach((el) => {
-    el.addEventListener("click", () => {
-      updateDialogPosition(editDialog);
-    });
-  });
+if (color) {
+  color.addEventListener("click", () => updateDialogPosition(colorDialog));
 }
-// // ウィンドウサイズ変更時に再計算
-// window.addEventListener("resize", () => {
-//   updateDialogPosition(registerDialog);
-//   updateDialogPosition(editDialog);
-// });
+
+dotsImg.forEach((el) => {
+  el.addEventListener("click", () => {
+    updateDialogPosition(editDialog);
+  });
+});
+
+// リサイズ時にもモーダル位置を更新
+window.addEventListener("resize", () => {
+  // モーダルが表示されている場合に、再計算を実行
+  const dialogs = [registerDialog, editDialog, colorDialog];
+  dialogs.forEach((dialog) => {
+    if (dialog && dialog.open) {
+      // モーダルが表示中の場合にのみ処理
+      updateDialogPosition(dialog);
+    }
+  });
+});

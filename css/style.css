@@ -31,7 +31,7 @@ button {
 }
 .header-wrapper > p {
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 0.65rem;
 }
 button > img {
   width: 1.5rem;
@@ -313,6 +313,6 @@ h1 {
   }
   dialog {
     width: 250px;
-    height: 80vh;
+    height: 73vh;
   }
 }
