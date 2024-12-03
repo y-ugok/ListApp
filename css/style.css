@@ -31,7 +31,7 @@ button {
 }
 .header-wrapper > p {
   margin: 0 auto;
-  font-size: 0.65rem;
+  font-size: 1rem;
 }
 button > img {
   width: 1.5rem;
@@ -181,6 +181,7 @@ dialog > p {
 #icon-type {
   font-size: 1rem;
 }
+
 .flex {
   padding-bottom: 0.5rem;
   border-bottom: solid 1px #f2f2f2;
@@ -202,7 +203,7 @@ label {
 .header-wrapper {
   display: flex;
   align-items: center;
-  margin: 1.5rem 0.75rem 1rem;
+  margin: 1.3rem 0.75rem;
 }
 
 #del-item-btn {
@@ -267,6 +268,42 @@ h1 {
   #plantContainer > img {
     width: 80px;
   }
+  .header-wrapper > p {
+    font-size: 0.6rem;
+  }
+  .header-wrapper {
+    margin: 1rem 0.5rem 0.5rem;
+  }
+  button > img {
+    width: 1rem;
+  }
+  label,
+  #icon-type,
+  #item-content {
+    font-size: 0.55rem;
+  }
+  #icon-type {
+    height: 1.2rem;
+  }
+  #item-content {
+    height: 2rem;
+  }
+  #update-item-btn {
+    font-size: 0.5rem;
+    padding: 0.25rem 0.55rem;
+  }
+  #del-item-btn {
+    font-size: 0.5rem;
+  }
+  .colorWrapper > p,
+  .wrapper > button {
+    font-size: 0.55rem;
+  }
+  .wrapper > button {
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 0.3rem;
+  }
 }
 
 @media screen and (min-width: 1025px) {
@@ -300,9 +337,9 @@ h1 {
   .icon-wrapper a > img {
     width: 1.3rem;
   }
-  button > img {
+  /* button > img {
     width: 0.7rem;
-  }
+  } */
   #plantContainer > img {
     width: 30%;
   }

@@ -21,10 +21,6 @@ li > button {
   background-color: #ffc7be;
 }
 
-label {
-  font-size: 0.9rem;
-}
-
 button {
   background-color: transparent;
   border: none;

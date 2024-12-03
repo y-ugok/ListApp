@@ -219,7 +219,6 @@ dialog {
   width: 4.2rem;
   height: 2.5rem;
   border: solid 1.3px lightgray;
-  margin: 0.6rem;
 }
 
 .wrapper {
@@ -234,15 +233,15 @@ dialog {
   align-items: center;
 }
 .colorWrapper > img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .flex > p {
   margin: 0;
 }
 .colorWrapper > img {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 .dialog {
   position: relative;
