@@ -1,9 +1,9 @@
-/* ----- 共通 ----- */
 body {
   margin: 0;
   background-color: #fffbf1;
   text-size-adjust: none;
 }
+
 header {
   background-color: #ffc3b7;
   padding: 1rem;
@@ -222,7 +222,7 @@ label {
   width: 100%;
 }
 #reset-dialog > p {
-  font-size: 1.05rem;
+  font-size: 0.8rem;
 }
 #colorClose > button {
   font-size: 2rem;
@@ -239,46 +239,36 @@ label {
 .colorWrapper > p {
   font-size: 1.2rem;
 }
-@media screen and (max-width: 1024px) {
-  body {
-    height: 100vh;
-    width: 100%;
-    background-color: #003053;
-    display: flex;
-    align-items: center;
-  }
-  .sp-main-wrapper {
-    background-color: #fffbf1;
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    position: relative;
-  }
-  footer {
-    position: initial;
-    position: absolute;
-    width: 99.5%;
-    height: 1em;
-    position: fixed;
-  }
-  h1 {
-    font-size: 1rem;
-  }
-  .icon-wrapper a > img {
-    width: 2rem;
-  }
-
-  footer {
-    padding: 0.95rem 0;
-  }
-  #update-item-btn,
-  #del-item-btn {
-    font-size: 0.9rem;
-  }
-  .header-wrapper > p {
-    font-size: 1rem;
+#del-item-btn {
+  font-size: 0.9rem;
+}
+.sp-main-wrapper {
+  background-color: #fffbf1;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+footer {
+  position: initial;
+  position: absolute;
+  width: 99.5%;
+  height: 1em;
+  position: fixed;
+  padding: 1.1rem 0;
+}
+h1 {
+  font-size: 1rem;
+}
+.icon-wrapper a > img {
+  width: 2rem;
+}
+@media screen and (min-width: 600px) {
+  #plantContainer > img {
+    width: 80px;
   }
 }
+
 @media screen and (min-width: 1025px) {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   body {
@@ -305,7 +295,7 @@ label {
     position: initial;
     position: absolute;
     width: 99.5%;
-    height: 1em;
+    padding: 0.5rem 0;
   }
   .icon-wrapper a > img {
     width: 1.3rem;
@@ -313,7 +303,9 @@ label {
   button > img {
     width: 0.7rem;
   }
-
+  #plantContainer > img {
+    width: 30%;
+  }
   #open,
   #open-disabled {
     padding: 0.3rem 0.55rem;
