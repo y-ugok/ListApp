@@ -220,10 +220,6 @@ img[src="./img/shopping.png"] {
   .rectangle {
     width: 1.3rem;
   }
-  #edit-dialog {
-    max-width: 24.5%;
-    height: 75%;
-  }
   li > button {
     width: 1.5rem;
   }

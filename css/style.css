@@ -319,7 +319,8 @@ label {
     padding: 0.3rem 0.55rem;
     border-radius: 0.35rem;
   }
-  #colorModal {
-    width: 100%;
+  dialog {
+    width: 250px;
+    height: 80vh;
   }
 }

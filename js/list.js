@@ -4,7 +4,7 @@ const open =
 const register = document.querySelector("#register-dialog");
 const registerButton = document.getElementById("register-item-btn");
 const registerCloseButton = document.getElementById("register-close");
-const edit = document.querySelector("#edit-dialog");
+const edit = document.getElementById("edit-dialog");
 const updateButton = document.getElementById("update-item-btn");
 const deleteButton = document.getElementById("del-item-btn");
 const editCloseButton = document.getElementById("edit-close");
@@ -148,7 +148,6 @@ function loadList() {
 
 function addDotsFunctionality() {
   const dotIcons = document.querySelectorAll(".list-flex>img");
-
   dotIcons.forEach((dotIcon) => {
     dotIcon.addEventListener("click", (event) => {
       const itemElement = event.target.closest("li");
@@ -176,6 +175,8 @@ function addDotsFunctionality() {
       edit.classList.add("show-from");
       edit.showModal();
 
+      // モーダルとフッターの位置を調整
+      adjustDialogPosition(edit);
       requestAnimationFrame(() => {
         // モーダル表示後にクラスを削除してアニメーションを開始
         edit.classList.remove("show-from");
@@ -307,5 +308,19 @@ function updatePlantImage() {
     plantImage.src = "./img/plant4.png";
   } else {
     plantImage.src = "./img/plant5.png";
+  }
+}
+// フッター位置の調整
+function adjustDialogPosition(dialog) {
+  if (window.innerWidth >= 1025) {
+    // 画面幅が1025px以上の場合にのみ調整を行う
+    const footerRect = footer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const footerOffset = viewportHeight - footerRect.bottom;
+    dialog.style.bottom = `${footerOffset}px`;
+    dialog.style.width = `250px`;
+  } else {
+    // 画面幅が狭い場合はデフォルト位置に戻す
+    dialog.style.bottom = 0;
   }
 }
