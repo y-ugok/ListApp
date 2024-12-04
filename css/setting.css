@@ -91,7 +91,7 @@ dialog::backdrop {
   background-color: #ccc; /* キャンセルボタンの背景色 */
 }
 #reset-dialog {
-  width: 60%;
+  width: 285px;
   margin: 0 auto;
   position: absolute;
   top: 37%;
@@ -269,8 +269,8 @@ dialog {
     font-size: 0.3em;
   }
   #reset-dialog {
-    width: 17%;
-    height: 15vh;
+    width: 250px;
+    height: 125px;
   }
   dialog > p {
     padding: 0.8rem;
@@ -282,4 +282,6 @@ dialog {
   #colorModal {
     height: 75vh;
   }
+}
+@media screen and (min-width: 10225px) {
 }

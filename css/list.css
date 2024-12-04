@@ -200,9 +200,6 @@ img[src="./img/shopping.png"] {
     margin-top: 0.2rem;
     height: 2.2em;
   }
-  header {
-    padding: 0.55rem;
-  }
 
   .complete-btn > img,
   li.action img:first-child,
