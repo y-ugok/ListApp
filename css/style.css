@@ -6,7 +6,7 @@ body {
 
 header {
   background-color: #ffc3b7;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 main {
   width: 88%;
@@ -235,7 +235,7 @@ label {
 }
 #cancel-reset,
 #confirm-reset {
-  font-size: 0.5rem;
+  font-size: 0.95rem;
 }
 .colorWrapper > p {
   font-size: 1.2rem;
