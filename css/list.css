@@ -103,7 +103,9 @@ li > button {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   padding: 0.2rem;
 }
-
+#edit-dialog {
+  height: 73vh;
+}
 /* 背景のスタイルは ::backdrop 疑似要素で指定 */
 #register-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);

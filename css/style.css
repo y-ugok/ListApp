@@ -162,7 +162,7 @@ dialog > p {
   border: 1px solid #d9d9d9;
   margin-bottom: 0.9em;
   background-color: #f8f8f8;
-  border-radius: 4px;
+  border-radius: 0.1rem;
   padding-left: 0.5rem;
   height: 1.8rem;
   font-size: 1rem;
@@ -173,9 +173,9 @@ dialog > p {
   height: 4rem;
   width: 99%;
   margin-bottom: 0.2rem;
-  border-radius: 4px;
+  border-radius: 0.1rem;
   border: 0.1px solid #d9d9d9;
-  font-size: 1rem;
+  font-size: 0.5rem;
 }
 #item-content,
 #icon-type {
@@ -265,6 +265,10 @@ h1 {
   width: 2rem;
 }
 @media screen and (min-width: 600px) {
+  #cancel-reset,
+  #confirm-reset {
+    font-size: 0.55rem;
+  }
   #plantContainer > img {
     width: 80px;
   }
@@ -300,12 +304,16 @@ h1 {
     font-size: 0.55rem;
   }
   .wrapper > button {
-    width: 3rem;
+    width: 2.8rem;
     height: 1.5rem;
     border-radius: 0.3rem;
+    font-size: 0.47rem;
   }
   dialog > p {
     padding: 0.6rem;
+  }
+  .beige {
+    margin-top: 0.4rem;
   }
 }
 
