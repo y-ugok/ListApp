@@ -10,7 +10,6 @@ window.addEventListener("load", () => {
   //リストアイテムを追加して更新すると色がデフォルトに戻る問題の解消
   const updateButton = document.getElementById("update-item-btn");
   const registerButton = document.getElementById("register-item-btn");
-
   if (updateButton) {
     updateButton.addEventListener("click", () => applyThemeColor(savedColor));
   }
@@ -22,6 +21,7 @@ window.addEventListener("load", () => {
 // == テーマカラーの適用 == //
 function applyThemeColor(color) {
   document.querySelector("header").style.backgroundColor = color;
+  document.getElementById("open").style.backgroundColor = color;
 
   const registerItemBtn = document.getElementById("register-item-btn");
   if (registerItemBtn) {
