@@ -21,7 +21,6 @@ window.addEventListener("load", () => {
 // == テーマカラーの適用 == //
 function applyThemeColor(color) {
   document.querySelector("header").style.backgroundColor = color;
-  document.getElementById("open").style.backgroundColor = color;
 
   const registerItemBtn = document.getElementById("register-item-btn");
   if (registerItemBtn) {
@@ -62,6 +61,10 @@ function applyThemeColor(color) {
   const confirmReset = document.getElementById("confirm-reset");
   if (confirmReset) {
     confirmReset.style.backgroundColor = color;
+  }
+  const open = document.getElementById("open");
+  if (open) {
+    open.style.backgroundColor = color;
   }
 }
 
