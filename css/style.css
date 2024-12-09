@@ -322,7 +322,7 @@ h1 {
   /* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
   body {
     height: 100vh;
-    background-color: rgb(88, 109, 92);
+    background-color: rgb(226, 226, 226);
     display: flex;
     align-items: center;
   }
