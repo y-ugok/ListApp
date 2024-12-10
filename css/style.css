@@ -156,12 +156,11 @@ dialog > p {
   margin-top: 0;
   margin-bottom: 60vh;
 }
-#list-type,
 #icon-type,
 #new-icon-type {
   width: 100%;
   border: 1px solid #d9d9d9;
-  margin-bottom: 0.9em;
+  margin-bottom: 0.1rem;
   background-color: #f8f8f8;
   border-radius: 0.1rem;
   padding-left: 0.5rem;
@@ -176,7 +175,7 @@ dialog > p {
   margin-bottom: 0.2rem;
   border-radius: 0.1rem;
   border: 0.1px solid #d9d9d9;
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 #item-content,
 #icon-type {
@@ -316,6 +315,13 @@ h1 {
   .beige {
     margin-top: 0.4rem;
   }
+  #new-icon-type {
+    height: 1.2rem;
+  }
+  #new-item-content,
+  #new-icon-type {
+    font-size: 0.55rem;
+  }
 }
 
 @media screen and (min-width: 1025px) {
@@ -359,14 +365,6 @@ h1 {
   #open-disabled {
     padding: 0.3rem 0.55rem;
     border-radius: 0.35rem;
-  }
-
-  #new-icon-type {
-    font-size: 0.55rem;
-    height: 1.2rem;
-  }
-  #new-item-content {
-    height: 2rem;
   }
   #register-item-btn {
     font-size: 0.5rem;
