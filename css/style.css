@@ -110,6 +110,7 @@ dialog {
   /*border-boxを要素に指定すると、paddingとborderは要素のwidthとheightに含まれる*/
   padding: 0;
 }
+
 /* 背景のスタイルは ::backdrop 疑似要素で指定 */
 /* dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);

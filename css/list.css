@@ -233,4 +233,11 @@ img[src="./img/shopping.png"] {
   li span img {
     width: 0.8rem;
   }
+  #register-dialog,
+  #edit-dialog {
+    width: 250px;
+  }
+  #register-dialog {
+    bottom: 0px;
+  }
 }

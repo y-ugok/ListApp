@@ -36,15 +36,24 @@ open.addEventListener("click", () => {
   });
 });
 
-function show() {
-  register.classList.add("show-from");
-  register.showModal();
+function show(dialog) {
+  dialog.classList.add("show-from");
+  dialog.showModal();
 
   requestAnimationFrame(() => {
     // モーダル表示後にクラスを削除してアニメーションを開始
-    register.classList.remove("show-from");
+    dialog.classList.remove("show-from");
   });
 }
+// function show() {
+//   register.classList.add("show-from");
+//   register.showModal();
+
+//   requestAnimationFrame(() => {
+//     // モーダル表示後にクラスを削除してアニメーションを開始
+//     register.classList.remove("show-from");
+//   });
+// }
 registerCloseButton.addEventListener("click", () => {
   // モーダル非表示前にクラスを付与してアニメーションを開始
   register.classList.add("hide-to");
@@ -141,6 +150,7 @@ function loadList() {
       completeHistory(itemText);
       // DOMから削除
       li.remove();
+      show(register);
     });
   });
   addDotsFunctionality(); // リストを読み込んだ後に追加
