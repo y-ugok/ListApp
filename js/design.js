@@ -91,7 +91,7 @@ function updateDialogPosition(dialog) {
   } else {
     // 1024px以上の場合、モーダル幅を250pxに設定し、フッターと下端が揃うように調整
     dialog.style.width = "250px";
-    dialog.style.height = "80vh"; // 高さを73vhに設定
+    dialog.style.height = "80vh"; // 高さを80vhに設定
     dialog.style.bottom = `${footerOffset}px`; // フッターの下端に合わせる
   }
   dialog.showModal(); // モーダルを表示
