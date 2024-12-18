@@ -45,31 +45,27 @@ function show(dialog) {
     dialog.classList.remove("show-from");
   });
 }
-// function show() {
-//   register.classList.add("show-from");
-//   register.showModal();
-
-//   requestAnimationFrame(() => {
-//     // モーダル表示後にクラスを削除してアニメーションを開始
-//     register.classList.remove("show-from");
-//   });
-// }
-registerCloseButton.addEventListener("click", () => {
+function close(dialog) {
   // モーダル非表示前にクラスを付与してアニメーションを開始
-  register.classList.add("hide-to");
+  dialog.classList.add("hide-to");
 
-  register.addEventListener(
+  dialog.addEventListener(
     "transitionend",
     () => {
       // アニメーション終了後にクラスを削除し、モーダルを閉じる
-      register.classList.remove("hide-to");
-      register.close();
-    }, //transitioneイベントが発生した時に実行される
+      dialog.classList.remove("hide-to");
+      dialog.close();
+    },
     {
       once: true,
-    } // イベントリスナーが一度だけ呼び出される
+    }
   );
+}
+
+registerCloseButton.addEventListener("click", () => {
+  close(register);
 });
+
 register.addEventListener("click", (event) => {
   if (event.target === register) {
     register.close();
