@@ -103,6 +103,9 @@ li > button {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   padding: 0.2rem;
 }
+#register-dialog {
+  height: 40vh;
+}
 #edit-dialog {
   height: 70vh;
 }
@@ -236,8 +239,5 @@ img[src="./img/shopping.png"] {
   #register-dialog,
   #edit-dialog {
     width: 250px;
-  }
-  #register-dialog {
-    bottom: 0px;
   }
 }

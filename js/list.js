@@ -81,7 +81,6 @@ function saveToSessionStorage(item) {
   let storedItems = JSON.parse(sessionStorage.getItem(listKey)) || [];
   storedItems.unshift(item);
   sessionStorage.setItem(listKey, JSON.stringify(storedItems));
-
   // 履歴を更新（in history.js）
   registerHistory(item.text);
 }
@@ -147,6 +146,7 @@ function loadList() {
       // DOMから削除
       li.remove();
       show(register);
+      adjustDialogPosition(register);
     });
   });
   addDotsFunctionality(); // リストを読み込んだ後に追加

@@ -37,10 +37,10 @@ function applyThemeColor(color) {
     updateButton.style.backgroundColor = color;
   }
 
-  const completeButtons = document.getElementsByClassName("complete-btn");
-  Array.from(completeButtons).forEach((btn) => {
-    btn.style.backgroundColor = color;
-  });
+  // const completeButtons = document.getElementsByClassName("complete-btn");
+  // Array.from(completeButtons).forEach((btn) => {
+  //   btn.style.backgroundColor = color;
+  // });
 
   const rectangles = document.querySelectorAll(".rectangle");
   rectangles.forEach((rect) => {
@@ -76,6 +76,7 @@ const dotsImg = document.querySelectorAll(".text+img");
 const colorDialog = document.getElementById("colorModal");
 const footer = document.querySelector("footer");
 const color = document.getElementById("colorButton");
+const clearDialog = document.getElementById("clear-dialog");
 
 function updateDialogPosition(dialog) {
   const viewportHeight = window.innerHeight; // ビューポートの高さ
@@ -112,11 +113,16 @@ dotsImg.forEach((el) => {
     updateDialogPosition(editDialog);
   });
 });
+// Array.from(completeButtons).forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     updateDialogPosition(clearDialog);
+//   });
+// });
 
 // リサイズ時にもモーダル位置を更新
 window.addEventListener("resize", () => {
   // モーダルが表示されている場合に、再計算を実行
-  const dialogs = [registerDialog, editDialog, colorDialog];
+  const dialogs = [clearDialog, registerDialog, editDialog, colorDialog];
   dialogs.forEach((dialog) => {
     if (dialog && dialog.open) {
       // モーダルが表示中の場合にのみ処理
